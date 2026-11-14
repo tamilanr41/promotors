@@ -11,9 +11,9 @@ import {
   Info,
   Phone,
 } from "lucide-react";
-import PageHeader from "@/components/marketing/page-header";
-import Reveal from "@/components/marketing/reveal";
-import Eyebrow from "@/components/marketing/eyebrow";
+import PageHeader from "../../../components/marketing/page-header";
+import Reveal from "../../../components/marketing/reveal";
+import Eyebrow from "../../../components/marketing/eyebrow";
 
 const projectTypes = [
   { value: "residential", label: "Residential", icon: Home, rate: 1850 },

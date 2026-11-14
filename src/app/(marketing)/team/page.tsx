@@ -1,10 +1,10 @@
-import ImageWithFallback from "@/components/ui/image-with-fallback";
+import ImageWithFallback from "../../../components/ui/image-with-fallback";
 import Link from "next/link";
 import { ArrowUpRight, Check, MapPin } from "lucide-react";
-import Eyebrow from "@/components/marketing/eyebrow";
-import PageHeader from "@/components/marketing/page-header";
-import Reveal from "@/components/marketing/reveal";
-import CtaBand from "@/components/marketing/cta-band";
+import Eyebrow from "../../../components/marketing/eyebrow";
+import PageHeader from "../../../components/marketing/page-header";
+import Reveal from "../../../components/marketing/reveal";
+import CtaBand from "../../../components/marketing/cta-band";
 
 const facts = [
   { value: "10+", label: "Years of experience" },

@@ -1,9 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import ImageWithFallback from "@/components/ui/image-with-fallback";
-import PageHeader from "@/components/marketing/page-header";
-import Reveal from "@/components/marketing/reveal";
+import ImageWithFallback from "../../../components/ui/image-with-fallback";
+import PageHeader from "../../../components/marketing/page-header";
+import Reveal from "../../../components/marketing/reveal";
 import { ArrowUpRight, Plus, Minus } from "lucide-react";
 
 const posts = [

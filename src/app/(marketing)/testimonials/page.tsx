@@ -2,10 +2,10 @@
 
 import Link from "next/link";
 import { ArrowUpRight, MapPin, Quote, Star } from "lucide-react";
-import Eyebrow from "@/components/marketing/eyebrow";
-import PageHeader from "@/components/marketing/page-header";
-import Reveal from "@/components/marketing/reveal";
-import CtaBand from "@/components/marketing/cta-band";
+import Eyebrow from "../../../components/marketing/eyebrow";
+import PageHeader from "../../../components/marketing/page-header";
+import Reveal from "../../../components/marketing/reveal";
+import CtaBand from "../../../components/marketing/cta-band";
 import { useLiveContent, TestimonialItem } from "@/lib/content-store";
 
 const defaultTestimonials: TestimonialItem[] = [

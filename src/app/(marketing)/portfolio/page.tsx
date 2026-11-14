@@ -1,10 +1,10 @@
 "use client";
 
 import { useEffect, useState, useMemo } from "react";
-import ImageWithFallback from "@/components/ui/image-with-fallback";
-import PageHeader from "@/components/marketing/page-header";
-import Reveal from "@/components/marketing/reveal";
-import CtaBand from "@/components/marketing/cta-band";
+import ImageWithFallback from "../../../components/ui/image-with-fallback";
+import PageHeader from "../../../components/marketing/page-header";
+import Reveal from "../../../components/marketing/reveal";
+import CtaBand from "../../../components/marketing/cta-band";
 import { X, ChevronLeft, ChevronRight, MapPin, ArrowUpRight } from "lucide-react";
 import { useLiveContent, ProjectItem, UpcomingProjectItem } from "@/lib/content-store";
 

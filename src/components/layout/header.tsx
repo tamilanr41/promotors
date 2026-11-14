@@ -119,30 +119,30 @@ export default function Header() {
         <div
           className={`transition-all duration-300 ${
             scrolled
-              ? "bg-white/95 dark:bg-slate-950/95 backdrop-blur-md border-b border-slate-200/80 dark:border-white/10 shadow-sm"
+              ? "bg-white/95 dark:bg-slate-950/95 backdrop-blur-md border-b border-slate-200/80 dark:border-white/10 shadow-md shadow-slate-900/5"
               : isDarkHero
               ? "bg-gradient-to-b from-black/80 via-black/40 to-transparent backdrop-blur-none border-b border-white/10"
               : "bg-transparent backdrop-blur-none border-b border-transparent"
           }`}
         >
-          <div className="mx-auto max-w-[1360px] px-3 sm:px-6 lg:px-8">
-            <div className="flex h-13 sm:h-14 items-center justify-between gap-2 sm:gap-4">
+          <div className="mx-auto max-w-[1360px] px-4 sm:px-6 lg:px-8">
+            <div className="flex h-14 sm:h-15 items-center justify-between gap-3">
               {/* BRAND LOGO & COMPACT NAME */}
               <Link href="/" className="group flex shrink-0 items-center gap-2">
-                <div className="relative h-6 sm:h-7 w-auto flex items-center justify-center transition-transform group-hover:scale-105">
+                <div className="relative h-7 sm:h-8 w-auto flex items-center justify-center transition-transform group-hover:scale-105">
                   <Image
                     src="/logo.png"
                     alt="AAA Promoterz & Builders"
-                    width={34}
-                    height={26}
-                    className="h-6 sm:h-7 w-auto object-contain drop-shadow-sm"
+                    width={40}
+                    height={30}
+                    className="h-7 sm:h-8 w-auto object-contain drop-shadow-sm"
                     priority
                   />
                 </div>
 
                 <div className="flex flex-col">
                   <div className="flex items-center gap-1 leading-none">
-                    <span className={`font-display text-[13px] sm:text-[15px] font-extrabold tracking-tight transition-colors ${
+                    <span className={`font-display text-sm sm:text-base font-extrabold tracking-tight transition-colors ${
                       isDarkHero
                         ? "text-white group-hover:text-amber-400"
                         : "text-slate-900 dark:text-white group-hover:text-amber-600 dark:group-hover:text-amber-400"
@@ -150,7 +150,7 @@ export default function Header() {
                       <span className="text-amber-500">AAA</span> PROMOTERZ
                     </span>
                   </div>
-                  <span className={`text-[7.5px] font-bold tracking-wider font-mono mt-0.5 ${
+                  <span className={`text-[8px] font-bold uppercase tracking-wider font-mono mt-0.5 ${
                     isDarkHero ? "text-slate-300" : "text-slate-500 dark:text-slate-400"
                   }`}>
                     BUILDERS &amp; DEVELOPERS
@@ -159,14 +159,14 @@ export default function Header() {
               </Link>
 
               {/* DESKTOP NAV - REFINED, SLEEK, COMPACT */}
-              <nav className="hidden items-center gap-1 xl:gap-1.5 lg:flex">
+              <nav className="hidden items-center gap-0.5 xl:gap-1 lg:flex">
                 {navigation.map((item) => (
                   <div key={item.name} className="relative">
                     {item.dropdown ? (
                       <div className="group/menu relative">
                         <button
                           suppressHydrationWarning
-                          className={`flex items-center gap-1 px-2.5 py-1 text-[12.5px] font-medium tracking-normal transition-colors rounded-md ${
+                          className={`flex items-center gap-1 px-2.5 py-1 text-[11.5px] font-semibold uppercase tracking-wider transition-colors rounded-md ${
                             isDarkHero
                               ? "text-white/85 hover:text-amber-400"
                               : "text-slate-700 dark:text-slate-200 hover:text-amber-600 dark:hover:text-amber-400"
@@ -175,12 +175,12 @@ export default function Header() {
                           <span>{item.name}</span>
                           <ChevronDown className="h-2.5 w-2.5 transition-transform duration-200 group-hover/menu:rotate-180 text-amber-500" />
                         </button>
-                        <div className="invisible absolute left-0 top-full mt-1 w-52 rounded-lg border border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-950/95 p-1 opacity-0 shadow-xl backdrop-blur-xl transition-all duration-200 group-hover/menu:visible group-hover/menu:opacity-100 z-50">
+                        <div className="invisible absolute left-0 top-full mt-1.5 w-56 translate-y-2 rounded-xl border border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-950/95 p-1.5 opacity-0 shadow-xl backdrop-blur-xl transition-all duration-200 group-hover/menu:visible group-hover/menu:translate-y-0 group-hover/menu:opacity-100 z-50">
                           {item.dropdown.map((sub) => (
                             <Link
                               key={sub.name}
                               href={sub.href}
-                              className="group/sub flex items-center justify-between rounded-md px-2.5 py-1.5 text-xs font-medium text-slate-700 dark:text-slate-300 transition-colors hover:bg-amber-500/10 hover:text-amber-600 dark:hover:text-amber-400"
+                              className="group/sub flex items-center justify-between rounded-lg px-2.5 py-1.5 text-xs font-medium text-slate-700 dark:text-slate-300 transition-colors hover:bg-amber-500/10 hover:text-amber-600 dark:hover:text-amber-400"
                             >
                               <span>{sub.name}</span>
                               <ArrowUpRight className="h-3 w-3 opacity-0 transition-opacity group-hover/sub:opacity-100 text-amber-500" />
@@ -191,9 +191,9 @@ export default function Header() {
                     ) : (
                       <Link
                         href={item.href}
-                        className={`relative px-2.5 py-1 text-[12.5px] font-medium tracking-normal transition-colors rounded-md ${
+                        className={`relative px-2.5 py-1 text-[11.5px] font-semibold uppercase tracking-wider transition-colors rounded-md ${
                           pathname === item.href
-                            ? "text-amber-500 font-semibold"
+                            ? "text-amber-500 font-bold"
                             : isDarkHero
                             ? "text-white/85 hover:text-amber-400"
                             : "text-slate-700 dark:text-slate-200 hover:text-amber-600 dark:hover:text-amber-400"
@@ -201,7 +201,7 @@ export default function Header() {
                       >
                         <span>{item.name}</span>
                         {pathname === item.href && (
-                          <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-3 h-0.5 bg-amber-500 rounded-full" />
+                          <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-3.5 h-0.5 bg-amber-500 rounded-full" />
                         )}
                       </Link>
                     )}
@@ -210,10 +210,10 @@ export default function Header() {
               </nav>
 
               {/* DESKTOP ACTIONS: COMPACT PHONE, PROFILE, THEME, ENQUIRE */}
-              <div className="hidden items-center gap-2 lg:flex">
+              <div className="hidden items-center gap-2.5 lg:flex">
                 <a
                   href="tel:+919176783332"
-                  className={`hidden items-center gap-1.5 text-[11px] font-mono font-medium transition-colors xl:flex ${
+                  className={`hidden items-center gap-1.5 text-[11px] font-mono font-semibold transition-colors xl:flex ${
                     isDarkHero
                       ? "text-white/85 hover:text-amber-400"
                       : "text-slate-700 dark:text-slate-200 hover:text-amber-600 dark:hover:text-amber-400"
@@ -229,26 +229,26 @@ export default function Header() {
                     <button
                       aria-label="Admin Profile"
                       title={user?.name || "Admin"}
-                      className="flex h-7 w-7 items-center justify-center rounded-md border border-amber-500/40 bg-amber-500/15 text-amber-600 dark:text-amber-400 hover:bg-amber-500/25 transition-all shadow-sm"
+                      className="flex h-7 w-7 sm:h-8 sm:w-8 items-center justify-center rounded-lg border border-amber-500/40 bg-amber-500/15 text-amber-600 dark:text-amber-400 hover:bg-amber-500/25 transition-all shadow-sm"
                     >
                       <User className="h-3.5 w-3.5" />
                     </button>
 
-                    <div className="invisible absolute right-0 top-full mt-1 w-48 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 p-1 opacity-0 shadow-xl transition-all duration-200 group-hover/user:visible group-hover/user:opacity-100 z-50">
-                      <div className="px-2.5 py-1.5 border-b border-slate-200 dark:border-slate-800 mb-1">
-                        <div className="text-[11px] font-bold text-slate-900 dark:text-white truncate">{user?.name || "Admin"}</div>
-                        <div className="text-[9px] text-slate-500 dark:text-slate-400 truncate font-mono">{user?.email}</div>
+                    <div className="invisible absolute right-0 top-full mt-1.5 w-52 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 p-1.5 opacity-0 shadow-2xl transition-all duration-200 group-hover/user:visible group-hover/user:opacity-100 z-50">
+                      <div className="px-3 py-2 border-b border-slate-200 dark:border-slate-800 mb-1">
+                        <div className="text-xs font-bold text-slate-900 dark:text-white truncate">{user?.name || "Admin"}</div>
+                        <div className="text-[10px] text-slate-500 dark:text-slate-400 truncate font-mono">{user?.email}</div>
                       </div>
                       <Link
                         href="/dashboard"
-                        className="flex items-center gap-2 rounded-md px-2 py-1.5 text-[11px] font-medium text-slate-700 dark:text-slate-200 hover:bg-amber-500/10 hover:text-amber-600 dark:hover:text-amber-400 transition-colors"
+                        className="flex items-center gap-2 rounded-lg px-2.5 py-1.5 text-xs font-semibold text-slate-700 dark:text-slate-200 hover:bg-amber-500/10 hover:text-amber-600 dark:hover:text-amber-400 transition-colors"
                       >
                         <LayoutDashboard className="h-3.5 w-3.5 text-amber-500" />
                         <span>Admin Dashboard</span>
                       </Link>
                       <button
                         onClick={() => signOut({ callbackUrl: "/" })}
-                        className="flex w-full items-center gap-2 rounded-md px-2 py-1.5 text-left text-[11px] font-medium text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-500/10 transition-colors"
+                        className="flex w-full items-center gap-2 rounded-lg px-2.5 py-1.5 text-left text-xs font-semibold text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-500/10 transition-colors"
                       >
                         <LogOut className="h-3.5 w-3.5" />
                         <span>Sign Out</span>
@@ -260,7 +260,7 @@ export default function Header() {
                     href="/admin-login"
                     aria-label="Admin Profile Login"
                     title="Admin Profile Login"
-                    className={`flex h-7 w-7 items-center justify-center rounded-md border transition-all shadow-sm ${
+                    className={`flex h-7 w-7 sm:h-8 sm:w-8 items-center justify-center rounded-lg border transition-all shadow-sm ${
                       isDarkHero
                         ? "border-white/25 bg-white/10 text-white hover:text-amber-400 hover:border-amber-400"
                         : "border-slate-300 dark:border-white/20 bg-white/70 dark:bg-white/5 hover:border-amber-500 hover:bg-amber-500/15 text-slate-700 dark:text-slate-200 hover:text-amber-600 dark:hover:text-amber-400"
@@ -276,7 +276,7 @@ export default function Header() {
                 {/* COMPACT ENQUIRE BUTTON */}
                 <Link
                   href="/contact"
-                  className="inline-flex items-center gap-1 bg-amber-500 hover:bg-amber-600 text-slate-950 px-2.5 py-1 rounded-md text-[11px] font-semibold transition-all shadow-sm shadow-amber-500/20"
+                  className="inline-flex items-center gap-1.5 bg-amber-500 hover:bg-amber-600 text-slate-950 px-3 py-1 rounded-md text-[11px] font-bold transition-all shadow-sm shadow-amber-500/20"
                 >
                   <span>Enquire</span>
                   <ArrowRight className="h-3 w-3" />
@@ -359,11 +359,11 @@ export default function Header() {
                             mobileDropdown === item.name ? null : item.name
                           )
                         }
-                        className="flex items-center justify-between w-full px-2 py-2 text-[13px] font-medium text-slate-800 dark:text-slate-200 hover:text-amber-600 dark:hover:text-amber-400 transition-colors"
+                        className="flex items-center justify-between w-full px-2 py-2.5 text-sm font-semibold text-slate-800 dark:text-slate-200 hover:text-amber-600 dark:hover:text-amber-400 transition-colors"
                       >
                         <span>{item.name}</span>
                         <ChevronDown
-                          className={`h-3.5 w-3.5 text-amber-500 transition-transform duration-200 ${mobileDropdown === item.name ? "rotate-180" : ""
+                          className={`h-4 w-4 text-amber-500 transition-transform duration-200 ${mobileDropdown === item.name ? "rotate-180" : ""
                             }`}
                         />
                       </button>
@@ -379,7 +379,7 @@ export default function Header() {
                                 setIsOpen(false);
                                 setMobileDropdown(null);
                               }}
-                              className="flex items-center justify-between px-2.5 py-1.5 rounded-md text-xs font-medium text-slate-700 dark:text-slate-300 hover:bg-amber-500/10 hover:text-amber-600 dark:hover:text-amber-400 transition-colors"
+                              className="flex items-center justify-between px-2.5 py-2 rounded-lg text-xs font-medium text-slate-700 dark:text-slate-300 hover:bg-amber-500/10 hover:text-amber-600 dark:hover:text-amber-400 transition-colors"
                             >
                               <span>{sub.name}</span>
                               <ArrowUpRight className="h-3 w-3 text-amber-500/70" />
@@ -395,7 +395,7 @@ export default function Header() {
                         setIsOpen(false);
                         setMobileDropdown(null);
                       }}
-                      className="block px-2 py-2 text-[13px] font-medium text-slate-800 dark:text-slate-200 hover:text-amber-600 dark:hover:text-amber-400 transition-colors border-b border-slate-100 dark:border-slate-900"
+                      className="block px-2 py-2.5 text-sm font-semibold text-slate-800 dark:text-slate-200 hover:text-amber-600 dark:hover:text-amber-400 transition-colors border-b border-slate-100 dark:border-slate-900"
                     >
                       {item.name}
                     </Link>

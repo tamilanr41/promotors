@@ -1,9 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import ImageWithFallback from "@/components/ui/image-with-fallback";
-import PageHeader from "@/components/marketing/page-header";
-import Reveal from "@/components/marketing/reveal";
+import ImageWithFallback from "../../../components/ui/image-with-fallback";
+import PageHeader from "../../../components/marketing/page-header";
+import Reveal from "../../../components/marketing/reveal";
 import { MapPin, Phone, Mail, Clock, Send, CheckCircle, ArrowUpRight } from "lucide-react";
 import { fetchLiveContent, saveLiveContent } from "@/lib/content-store";
 

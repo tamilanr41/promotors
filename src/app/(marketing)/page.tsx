@@ -19,9 +19,9 @@ import {
   MapPin,
 } from "lucide-react";
 import { Home, Building2, Factory, Road, Hammer, Sprout, FileCheck, HardHat } from "lucide-react";
-import Reveal from "@/components/marketing/reveal";
-import ImageWithFallback from "@/components/ui/image-with-fallback";
-import HeroSlider from "@/components/marketing/hero-slider";
+import Reveal from "../../components/marketing/reveal";
+import ImageWithFallback from "../../components/ui/image-with-fallback";
+import HeroSlider from "../../components/marketing/hero-slider";
 import { useLiveContent, ProjectItem, UpcomingProjectItem, TestimonialItem } from "@/lib/content-store";
 
 const testimonials = [

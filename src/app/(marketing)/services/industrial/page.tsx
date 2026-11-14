@@ -1,4 +1,4 @@
-import ServicePage, { type ServicePageData } from "@/components/marketing/service-page";
+import ServicePage, { type ServicePageData } from "../../../../components/marketing/service-page";
 
 const data: ServicePageData = {
   eyebrow: "Services · Industrial",
