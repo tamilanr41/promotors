@@ -1,0 +1,650 @@
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+:root {
+  --font-inter: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-montserrat: 'Montserrat', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-display: 'Instrument Sans', 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --cos-orange: #f97316;
+  --cos-orange-dark: #ea580c;
+  --cos-orange-light: #fb923c;
+  --cos-blue: #1e3a5f;
+  --cos-blue-dark: #0f2440;
+  --cos-blue-light: #2d5a8e;
+  --cos-accent: #f59e0b;
+  /* Space-separated RGB triplets for Tailwind alpha support - High Contrast Dark Text */
+  --ink: 15 23 42;
+  --ink-soft: 30 41 59;
+  --ink-deep: 2 6 23;
+  --ink-800: 15 23 42;
+  --ink-700: 30 41 59;
+  --paper: 255 255 255;
+  --bone: 248 249 250;
+  --bone-200: 241 245 249;
+  --bone-300: 226 232 240;
+  --brass: 245 158 11;
+  --brass-light: 251 191 36;
+  --brass-dark: 217 119 6;
+  --background: 255 255 255;
+  --foreground: 15 23 42;
+}
+
+.dark {
+  --ink: 242 243 245;
+  --ink-soft: 220 222 226;
+  --ink-deep: 255 255 255;
+  --ink-800: 28 28 28;
+  --ink-700: 40 40 40;
+  --paper: 25 25 25;
+  --bone: 32 32 32;
+  --bone-200: 40 40 40;
+  --bone-300: 50 50 50;
+  --brass: 255 199 29;
+  --brass-light: 255 214 77;
+  --brass-dark: 167 177 194;
+  --background: 25 25 25;
+  --foreground: 167 177 194;
+}
+
+body {
+  background-color: rgb(var(--paper) / 1);
+  color: rgb(var(--foreground) / 1);
+}
+
+/* Fix base (full-opacity) utility classes: Tailwind's var(--tw-*-opacity,1)
+   does not resolve inside rgb() with CSS variables in this browser. */
+.bg-paper { background-color: rgb(var(--paper) / 1); }
+.bg-bone { background-color: rgb(var(--bone) / 1); }
+.bg-ink { background-color: rgb(var(--ink) / 1); }
+.bg-brass { background-color: rgb(var(--brass) / 1); }
+.bg-brass { color: #1a1a1a; }
+
+.hero-subtitle { color: #1e293b; font-weight: 500; }
+.dark .hero-subtitle { color: #cbd5e1; }
+p { color: rgb(var(--ink-soft) / 0.95); }
+.text-ink { color: rgb(var(--ink) / 1); }
+.text-bone { color: rgb(var(--bone) / 1); }
+.text-brass { color: rgb(var(--brass) / 1); }
+.text-brass-dark { color: rgb(var(--brass-dark) / 1); }
+.border-bone { border-color: rgb(var(--bone) / 1); }
+.border-ink { border-color: rgb(var(--ink) / 1); }
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  html,
+  body {
+    overflow-x: clip;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  /* Hide scrollbars globally (Structo style) */
+  html,
+  body {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  html::-webkit-scrollbar,
+  body::-webkit-scrollbar {
+    display: none;
+  }
+
+  body {
+    color: rgb(var(--foreground) / 1);
+    background: rgb(var(--background) / 1);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    font-family: var(--font-inter);
+  }
+
+  ::selection {
+    background: var(--brass);
+    color: var(--ink);
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #f5f6f7;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #cdd2d8;
+    border-radius: 9999px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #aab2bd;
+  }
+}
+
+/* Glassmorphism & Modern Card Utilities */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+.glass-panel-dark {
+  background: rgba(11, 21, 40, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glass-card {
+  background: #ffffff;
+  border-radius: 1.25rem;
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.06), 0 4px 6px -4px rgba(0, 0, 0, 0.03);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-card:hover {
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(249, 115, 22, 0.15);
+}
+
+.glass-input {
+  background: #f8fafc;
+  border: 1.5px solid #e2e8f0;
+  transition: all 0.2s ease;
+}
+
+.glass-input:focus {
+  background: #ffffff;
+  border-color: #f97316;
+  box-shadow: 0 0 0 4px rgba(249, 115, 22, 0.12);
+}
+
+.shimmer-bg {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.4) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  background-size: 200% 100%;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes pulse-subtle {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+.animate-pulse-subtle {
+  animation: pulse-subtle 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* ============================================================
+   Editorial design system — AAA Promoterz
+   ============================================================ */
+
+.font-display {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+::selection {
+  background: var(--brass);
+  color: var(--ink);
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 36s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+@keyframes slowZoom {
+  from {
+    transform: scale(1.12);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+.animate-slow-zoom {
+  animation: slowZoom 18s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes heroRise {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-hero-rise {
+  animation: heroRise 1.1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes lineGrow {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.animate-line-grow {
+  transform-origin: left;
+  animation: lineGrow 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Thin rules */
+.rule-ink {
+  border-color: rgba(34, 34, 34, 0.12);
+}
+
+.rule-bone {
+  border-color: rgba(255, 255, 255, 0.16);
+}
+
+/* Image treatment — clean and true to colour */
+.editorial-img {
+  filter: none;
+  transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.group:hover .editorial-img {
+  transform: scale(1.03);
+}
+
+
+/* ============================================================
+   Different Distinct Hover Animations for Website Images
+   ============================================================ */
+
+/* 1. 3D Tilt & Subtle Perspective Rotation */
+.hover-img-tilt {
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.6s ease;
+  transform-origin: center center;
+}
+.group:hover .hover-img-tilt,
+.hover-img-tilt:hover {
+  transform: scale(1.07) rotate(1.2deg) translateY(-4px);
+  box-shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.35);
+}
+
+/* 2. Deep Cinematic Parallax Zoom */
+.hover-img-zoom {
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), filter 0.8s ease;
+}
+.group:hover .hover-img-zoom,
+.hover-img-zoom:hover {
+  transform: scale(1.12);
+}
+
+/* 3. Golden Amber Glow & Ring Expansion */
+.hover-img-glow {
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s ease, border-color 0.5s ease;
+}
+.group:hover .hover-img-glow,
+.hover-img-glow:hover {
+  transform: scale(1.05) translateY(-3px);
+  box-shadow: 0 0 30px rgba(244, 180, 0, 0.45), 0 12px 24px -6px rgba(0, 0, 0, 0.3);
+}
+
+/* 4. Color Burst (Grayscale to Rich Saturation) */
+.hover-img-vibrant {
+  filter: saturate(0.9) brightness(0.95);
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1), filter 0.7s ease;
+}
+.group:hover .hover-img-vibrant,
+.hover-img-vibrant:hover {
+  filter: saturate(1.25) brightness(1.05);
+  transform: scale(1.08);
+}
+
+/* 5. Smooth Elevation Float with Floating Shadow */
+.hover-img-float {
+  transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.5s ease;
+}
+.group:hover .hover-img-float,
+.hover-img-float:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 24px 45px -12px rgba(11, 21, 18, 0.35);
+}
+
+/* 6. Shimmer Light Beam Sweep Animation */
+.shimmer-card {
+  position: relative;
+  overflow: hidden;
+}
+.shimmer-card::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    60deg,
+    transparent 35%,
+    rgba(255, 255, 255, 0.35) 50%,
+    transparent 65%
+  );
+  transform: translateX(-100%);
+  transition: transform 0.9s ease;
+  pointer-events: none;
+}
+.shimmer-card:hover::after {
+  transform: translateX(100%);
+}
+
+/* ============================================================
+   Running Marquee / Ticker Animation for Top Offer Banner
+   ============================================================ */
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  display: inline-flex;
+  white-space: nowrap;
+  animation: marquee 35s linear infinite;
+  will-change: transform;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* ============================================================
+   Lumbert / Playwood Hero Section Styles & Ken Burns Keyframes
+   ============================================================ */
+@import url("https://fonts.googleapis.com/css2?family=Zalando+Sans+SemiExpanded:wght@200..900&display=swap");
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background: #111417;
+}
+
+.hero__slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 1.2s ease-in-out;
+  transform: scale(1.08);
+  will-change: transform, opacity;
+}
+
+.hero__slide.is-active {
+  opacity: 1;
+  animation: kenburns 9s ease-out forwards;
+}
+
+@keyframes kenburns {
+  from {
+    transform: scale(1.02);
+  }
+  to {
+    transform: scale(1.12);
+  }
+}
+
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(10, 12, 11, 0.88) 0%,
+    rgba(10, 12, 11, 0.6) 50%,
+    rgba(10, 12, 11, 0.35) 100%
+  );
+  pointer-events: none;
+}
+
+.hero__inner {
+  position: relative;
+  z-index: 2;
+  padding-top: 150px;
+  padding-bottom: 90px;
+  width: 100%;
+}
+
+.hero__sub {
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  font-size: 13px;
+  font-weight: 700;
+  color: #c7b98d;
+  margin-bottom: 26px;
+  line-height: 1.6;
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.hero__sub::before {
+  content: "";
+  width: 28px;
+  height: 2px;
+  background: currentColor;
+  display: inline-block;
+}
+
+.hero__title {
+  color: #ffffff;
+  text-transform: uppercase;
+  font-family: "Zalando Sans SemiExpanded", var(--font-display), sans-serif;
+  font-size: clamp(38px, 6.8vw, 96px);
+  line-height: 0.94;
+  letter-spacing: -0.02em;
+  margin-bottom: 44px;
+  max-width: 14ch;
+  font-weight: 800;
+  text-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+}
+
+.hero__actions {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+  flex-wrap: wrap;
+}
+
+.hero__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  background: #b34325;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 12.5px;
+  font-weight: 700;
+  padding: 19px 38px;
+  border: 1px solid #b34325;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  box-shadow: 0 10px 25px rgba(179, 67, 37, 0.35);
+  cursor: pointer;
+}
+
+.hero__btn:hover {
+  background: #2a3f33;
+  border-color: #2a3f33;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.4);
+}
+
+.video-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1.5;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  transition: opacity 0.25s ease;
+}
+
+.video-link:hover {
+  opacity: 0.92;
+}
+
+.video-link__play {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 255, 255, 0.6);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(4px);
+}
+
+.video-link__play::before {
+  content: "";
+  width: 0;
+  height: 0;
+  border-left: 12px solid #ffffff;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  margin-left: 3px;
+  transition: transform 0.25s ease;
+}
+
+.video-link:hover .video-link__play {
+  background: #b34325;
+  border-color: #b34325;
+  transform: scale(1.08);
+  box-shadow: 0 0 20px rgba(179, 67, 37, 0.6);
+}
+
+.video-link:hover .video-link__play::before {
+  transform: scale(1.1);
+}
+
+.hero__bullets {
+  position: absolute;
+  right: 36px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.hero__bullets button {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 255, 255, 0.7);
+  background: transparent;
+  padding: 0;
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
+
+.hero__bullets button.is-active {
+  background: #b34325;
+  border-color: #b34325;
+  transform: scale(1.4);
+  box-shadow: 0 0 12px rgba(179, 67, 37, 0.85);
+}
+
+@media (max-width: 900px) {
+  .hero__inner {
+    padding-top: 130px;
+    padding-bottom: 80px;
+  }
+  .hero__title {
+    font-size: clamp(34px, 8vw, 64px);
+    max-width: 100%;
+  }
+  .hero__bullets {
+    right: 18px;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero__inner {
+    padding-top: 110px;
+    padding-bottom: 70px;
+  }
+  .hero__actions {
+    gap: 24px;
+  }
+  .hero__bullets {
+    right: 12px;
+  }
+  .hero__bullets button {
+    width: 9px;
+    height: 9px;
+  }
+}
+
+

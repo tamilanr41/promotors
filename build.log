@@ -1,0 +1,265 @@
+﻿  Γû▓ Next.js 14.2.35
+  - Environments: .env
+
+   Creating an optimized production build ...
+ Γ£ô Compiled successfully
+   Linting and checking validity of types ...
+
+./src/app/api/analytics/route.ts
+13:11  Warning: 'startOfYear' is assigned a value but never used. Allowed unused vars must match /^_/u.  @typescript-eslint/no-unused-vars
+
+./src/app/api/estimator/route.ts
+26:140  Warning: 'preferences' is defined but never used. Allowed unused args must match /^_/u.  @typescript-eslint/no-unused-vars
+
+./src/app/dashboard/analytics/page.tsx
+8:36  Warning: 'BarChart3' is defined but never used. Allowed unused vars must match /^_/u.  @typescript-eslint/no-unused-vars
+8:47  Warning: 'PieChart' is defined but never used. Allowed unused vars must match /^_/u.  @typescript-eslint/no-unused-vars
+8:57  Warning: 'Activity' is defined but never used. Allowed unused vars must match /^_/u.  @typescript-eslint/no-unused-vars
+8:67  Warning: 'DollarSign' is defined but never used. Allowed unused vars must match /^_/u.  @typescript-eslint/no-unused-vars
+8:79  Warning: 'FolderKanban' is defined but never used. Allowed unused vars must match /^_/u.  @typescript-eslint/no-unused-vars
+8:93  Warning: 'Users' is defined but never used. Allowed unused vars must match /^_/u.  @typescript-eslint/no-unused-vars
+8:100  Warning: 'Clock' is defined but never used. Allowed unused vars must match /^_/u.  @typescript-eslint/no-unused-vars
+
+./src/app/dashboard/branches/page.tsx
+7:41  Warning: 'CardTitle' is defined but never used. Allowed unused vars must match /^_/u.  @typescript-eslint/no-unused-vars
+9:35  Warning: 'MapPin' is defined but never used. Allowed unused vars must match /^_/u.  @typescript-eslint/no-unused-vars
+9:43  Warning: 'Phone' is defined but never used. Allowed unused vars must match /^_/u.  @typescript-eslint/no-unused-vars
+
+./src/app/dashboard/clients/page.tsx
+7:41  Warning: 'CardTitle' is defined but never used. Allowed unused vars must match /^_/u.  @typescript-eslint/no-unused-vars
+9:24  Warning: 'Users' is defined but never used. Allowed unused vars must match /^_/u.  @typescript-eslint/no-unused-vars
+9:31  Warning: 'Phone' is defined but never used. Allowed unused vars must match /^_/u.  @typescript-eslint/no-unused-vars
+9:38  Warning: 'Mail' is defined but never used. Allowed unused vars must match /^_/u.  @typescript-eslint/no-unused-vars
+9:55  Warning: 'MapPin' is defined but never used. Allowed unused vars must match /^_/u.  @typescript-eslint/no-unused-vars
+
+./src/app/dashboard/crm/page.tsx
+9:24  Warning: 'UserCheck' is defined but never used. Allowed unused vars must match /^_/u.  @typescript-eslint/no-unused-vars
+9:48  Warning: 'Building2' is defined but never used. Allowed unused vars must match /^_/u.  @typescript-eslint/no-unused-vars
+9:59  Warning: 'Calendar' is defined but never used. Allowed unused vars must match /^_/u.  @typescript-eslint/no-unused-vars
+9:69  Warning: 'TrendingUp' is defined but never used. Allowed unused vars must match /^_/u.  @typescript-eslint/no-unused-vars
+9:81  Warning: 'Users' is defined but never used. Allowed unused vars must match /^_/u.  @typescript-eslint/no-unused-vars
+
+./src/app/dashboard/equipment/page.tsx
+7:41  Warning: 'CardTitle' is defined but never used. Allowed unused vars must match /^_/u.  @typescript-eslint/no-unused-vars
+
+./src/app/dashboard/finance/page.tsx
+7:41  Warning: 'CardTitle' is defined but never used. Allowed unused vars must match /^_/u.  @typescript-eslint/no-unused-vars
+
+./src/app/dashboard/leads/page.tsx
+8:41  Warning: 'CardTitle' is defined but never used. Allowed unused vars must match /^_/u.  @typescript-eslint/no-unused-vars
+10:24  Warning: 'Users2' is defined but never used. Allowed unused vars must match /^_/u.  @typescript-eslint/no-unused-vars
+10:63  Warning: 'DollarSign' is defined but never used. Allowed unused vars must match /^_/u.  @typescript-eslint/no-unused-vars
+10:75  Warning: 'Calendar' is defined but never used. Allowed unused vars must match /^_/u.  @typescript-eslint/no-unused-vars
+10:85  Warning: 'Building2' is defined but never used. Allowed unused vars must match /^_/u.  @typescript-eslint/no-unused-vars
+
+./src/app/dashboard/marketing/page.tsx
+7:46  Warning: 'MousePointerClick' is defined but never used. Allowed unused vars must match /^_/u.  @typescript-eslint/no-unused-vars
+7:65  Warning: 'Eye' is defined but never used. Allowed unused vars must match /^_/u.  @typescript-eslint/no-unused-vars
+7:70  Warning: 'Mail' is defined but never used. Allowed unused vars must match /^_/u.  @typescript-eslint/no-unused-vars
+
+./src/app/dashboard/page.tsx
+25:7  Warning: 'statusColors' is assigned a value but never used. Allowed unused vars must match /^_/u.  @typescript-eslint/no-unused-vars
+33:7  Warning: 'projects' is assigned a value but never used. Allowed unused vars must match /^_/u.  @typescript-eslint/no-unused-vars
+63:7  Warning: 'formatCurrency' is assigned a value but never used. Allowed unused vars must match /^_/u.  @typescript-eslint/no-unused-vars
+
+./src/app/dashboard/procurement/page.tsx
+7:41  Warning: 'CardTitle' is defined but never used. Allowed unused vars must match /^_/u.  @typescript-eslint/no-unused-vars
+9:38  Warning: 'Package' is defined but never used. Allowed unused vars must match /^_/u.  @typescript-eslint/no-unused-vars
+9:68  Warning: 'AlertTriangle' is defined but never used. Allowed unused vars must match /^_/u.  @typescript-eslint/no-unused-vars
+
+./src/app/dashboard/projects/page.tsx
+9:41  Warning: 'CardTitle' is defined but never used. Allowed unused vars must match /^_/u.  @typescript-eslint/no-unused-vars
+
+./src/app/dashboard/projects/[id]/page.tsx
+3:10  Warning: 'useState' is defined but never used. Allowed unused vars must match /^_/u.  @typescript-eslint/no-unused-vars
+14:3  Warning: 'Calendar' is defined but never used. Allowed unused vars must match /^_/u.  @typescript-eslint/no-unused-vars
+15:3  Warning: 'Users' is defined but never used. Allowed unused vars must match /^_/u.  @typescript-eslint/no-unused-vars
+16:3  Warning: 'FileText' is defined but never used. Allowed unused vars must match /^_/u.  @typescript-eslint/no-unused-vars
+17:3  Warning: 'Wallet' is defined but never used. Allowed unused vars must match /^_/u.  @typescript-eslint/no-unused-vars
+18:3  Warning: 'ClipboardCheck' is defined but never used. Allowed unused vars must match /^_/u.  @typescript-eslint/no-unused-vars
+19:3  Warning: 'ShieldAlert' is defined but never used. Allowed unused vars must match /^_/u.  @typescript-eslint/no-unused-vars
+69:9  Warning: 'params' is assigned a value but never used. Allowed unused vars must match /^_/u.  @typescript-eslint/no-unused-vars
+
+./src/app/dashboard/quality/page.tsx
+7:41  Warning: 'CardTitle' is defined but never used. Allowed unused vars must match /^_/u.  @typescript-eslint/no-unused-vars
+9:78  Warning: 'FileText' is defined but never used. Allowed unused vars must match /^_/u.  @typescript-eslint/no-unused-vars
+
+./src/app/dashboard/safety/page.tsx
+9:37  Warning: 'CheckCircle2' is defined but never used. Allowed unused vars must match /^_/u.  @typescript-eslint/no-unused-vars
+
+./src/app/dashboard/settings/page.tsx
+3:10  Warning: 'useState' is defined but never used. Allowed unused vars must match /^_/u.  @typescript-eslint/no-unused-vars
+13:22  Warning: 'User' is defined but never used. Allowed unused vars must match /^_/u.  @typescript-eslint/no-unused-vars
+13:28  Warning: 'Shield' is defined but never used. Allowed unused vars must match /^_/u.  @typescript-eslint/no-unused-vars
+13:36  Warning: 'Bell' is defined but never used. Allowed unused vars must match /^_/u.  @typescript-eslint/no-unused-vars
+13:42  Warning: 'Palette' is defined but never used. Allowed unused vars must match /^_/u.  @typescript-eslint/no-unused-vars
+13:51  Warning: 'Link2' is defined but never used. Allowed unused vars must match /^_/u.  @typescript-eslint/no-unused-vars
+13:58  Warning: 'Database' is defined but never used. Allowed unused vars must match /^_/u.  @typescript-eslint/no-unused-vars
+
+./src/app/dashboard/workforce/page.tsx
+7:41  Warning: 'CardTitle' is defined but never used. Allowed unused vars must match /^_/u.  @typescript-eslint/no-unused-vars
+9:24  Warning: 'Briefcase' is defined but never used. Allowed unused vars must match /^_/u.  @typescript-eslint/no-unused-vars
+
+./src/app/portal/documents/page.tsx
+8:35  Warning: 'FolderKanban' is defined but never used. Allowed unused vars must match /^_/u.  @typescript-eslint/no-unused-vars
+
+./src/app/portal/messages/page.tsx
+9:10  Warning: 'MessageSquare' is defined but never used. Allowed unused vars must match /^_/u.  @typescript-eslint/no-unused-vars
+
+./src/app/portal/page.tsx
+13:3  Warning: 'Calendar' is defined but never used. Allowed unused vars must match /^_/u.  @typescript-eslint/no-unused-vars
+15:3  Warning: 'Eye' is defined but never used. Allowed unused vars must match /^_/u.  @typescript-eslint/no-unused-vars
+17:3  Warning: 'HardHat' is defined but never used. Allowed unused vars must match /^_/u.  @typescript-eslint/no-unused-vars
+19:3  Warning: 'CheckCircle2' is defined but never used. Allowed unused vars must match /^_/u.  @typescript-eslint/no-unused-vars
+20:3  Warning: 'Clock' is defined but never used. Allowed unused vars must match /^_/u.  @typescript-eslint/no-unused-vars
+21:3  Warning: 'AlertTriangle' is defined but never used. Allowed unused vars must match /^_/u.  @typescript-eslint/no-unused-vars
+
+./src/app/portal/portal-client-layout.tsx
+7:10  Warning: 'Button' is defined but never used. Allowed unused vars must match /^_/u.  @typescript-eslint/no-unused-vars
+8:10  Warning: 'Badge' is defined but never used. Allowed unused vars must match /^_/u.  @typescript-eslint/no-unused-vars
+
+./src/app/portal/projects/page.tsx
+3:10  Warning: 'Button' is defined but never used. Allowed unused vars must match /^_/u.  @typescript-eslint/no-unused-vars
+4:29  Warning: 'CardHeader' is defined but never used. Allowed unused vars must match /^_/u.  @typescript-eslint/no-unused-vars
+4:41  Warning: 'CardTitle' is defined but never used. Allowed unused vars must match /^_/u.  @typescript-eslint/no-unused-vars
+6:10  Warning: 'Table' is defined but never used. Allowed unused vars must match /^_/u.  @typescript-eslint/no-unused-vars
+6:17  Warning: 'TableBody' is defined but never used. Allowed unused vars must match /^_/u.  @typescript-eslint/no-unused-vars
+6:28  Warning: 'TableCell' is defined but never used. Allowed unused vars must match /^_/u.  @typescript-eslint/no-unused-vars
+6:39  Warning: 'TableHead' is defined but never used. Allowed unused vars must match /^_/u.  @typescript-eslint/no-unused-vars
+6:50  Warning: 'TableHeader' is defined but never used. Allowed unused vars must match /^_/u.  @typescript-eslint/no-unused-vars
+6:63  Warning: 'TableRow' is defined but never used. Allowed unused vars must match /^_/u.  @typescript-eslint/no-unused-vars
+7:31  Warning: 'Eye' is defined but never used. Allowed unused vars must match /^_/u.  @typescript-eslint/no-unused-vars
+
+./src/components/ai/ai-chatbot.tsx
+5:10  Warning: 'Badge' is defined but never used. Allowed unused vars must match /^_/u.  @typescript-eslint/no-unused-vars
+
+./src/components/layout/dashboard-layout.tsx
+7:10  Warning: 'Button' is defined but never used. Allowed unused vars must match /^_/u.  @typescript-eslint/no-unused-vars
+11:10  Warning: 'Separator' is defined but never used. Allowed unused vars must match /^_/u.  @typescript-eslint/no-unused-vars
+40:3  Warning: 'X' is defined but never used. Allowed unused vars must match /^_/u.  @typescript-eslint/no-unused-vars
+48:3  Warning: 'PieChart' is defined but never used. Allowed unused vars must match /^_/u.  @typescript-eslint/no-unused-vars
+
+./src/components/ui/dropdown-menu.tsx
+3:17  Warning: 'ChevronRight' is defined but never used. Allowed unused vars must match /^_/u.  @typescript-eslint/no-unused-vars
+71:19  Warning: 'e' is defined but never used. Allowed unused args must match /^_/u.  @typescript-eslint/no-unused-vars
+
+./src/components/ui/toast.tsx
+128:11  Warning: 'ToastAction' is defined but never used. Allowed unused vars must match /^_/u.  @typescript-eslint/no-unused-vars
+
+info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/basic-features/eslint#disabling-rules
+   Collecting page data ...
+   Generating static pages (0/54) ...
+   Generating static pages (13/54) 
+node.exe : Notifications GET error: n [Error]: Dynamic server usage: Route /api/notifications couldn't be rendered 
+statically because it used `headers`. See more info here: https://nextjs.org/docs/messages/dynamic-server-error
+At line:1 char:1
++ & "C:\Program Files\nodejs/node.exe" "C:\Program Files\nodejs/node_mo ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Notifications G...ic-server-error:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+    at l (D:\TAMILAN\TASK5\.next\server\chunks\8948.js:1:37220)
+    at d (D:\TAMILAN\TASK5\.next\server\chunks\9656.js:25:31170)
+    at s (D:\TAMILAN\TASK5\.next\server\chunks\9656.js:25:20859)
+    at d (D:\TAMILAN\TASK5\.next\server\app\api\notifications\route.js:1:1316)
+    at D:\TAMILAN\TASK5\node_modules\next\dist\compiled\next-server\app-route.runtime.prod.js:6:38417
+    at D:\TAMILAN\TASK5\node_modules\next\dist\server\lib\trace\tracer.js:140:36
+    at NoopContextManager.with (D:\TAMILAN\TASK5\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:7062)
+    at ContextAPI.with (D:\TAMILAN\TASK5\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:518)
+    at NoopTracer.startActiveSpan 
+(D:\TAMILAN\TASK5\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:18093)
+    at ProxyTracer.startActiveSpan 
+(D:\TAMILAN\TASK5\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:18854) {
+  description: "Route /api/notifications couldn't be rendered statically because it used `headers`. See more info 
+here: https://nextjs.org/docs/messages/dynamic-server-error",
+  digest: 'DYNAMIC_SERVER_USAGE'
+}
+   Generating static pages (26/54) 
+   Generating static pages (40/54) 
+Analytics GET error: B [Error]: Dynamic server usage: Route /api/analytics couldn't be rendered statically because it 
+used `request.url`. See more info here: https://nextjs.org/docs/messages/dynamic-server-error
+    at V (D:\TAMILAN\TASK5\node_modules\next\dist\compiled\next-server\app-route.runtime.prod.js:6:21778)
+    at Object.get (D:\TAMILAN\TASK5\node_modules\next\dist\compiled\next-server\app-route.runtime.prod.js:6:29465)
+    at u (D:\TAMILAN\TASK5\.next\server\app\api\analytics\route.js:1:604)
+    at D:\TAMILAN\TASK5\node_modules\next\dist\compiled\next-server\app-route.runtime.prod.js:6:38417
+    at D:\TAMILAN\TASK5\node_modules\next\dist\server\lib\trace\tracer.js:140:36
+    at NoopContextManager.with (D:\TAMILAN\TASK5\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:7062)
+    at ContextAPI.with (D:\TAMILAN\TASK5\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:518)
+    at NoopTracer.startActiveSpan 
+(D:\TAMILAN\TASK5\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:18093)
+    at ProxyTracer.startActiveSpan 
+(D:\TAMILAN\TASK5\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:18854)
+    at D:\TAMILAN\TASK5\node_modules\next\dist\server\lib\trace\tracer.js:122:103 {
+  description: "Route /api/analytics couldn't be rendered statically because it used `request.url`. See more info 
+here: https://nextjs.org/docs/messages/dynamic-server-error",
+  digest: 'DYNAMIC_SERVER_USAGE'
+}
+ Γ£ô Generating static pages (54/54)
+   Finalizing page optimization ...
+   Collecting build traces ...
+
+Route (app)                              Size     First Load JS
+Γöî Γùï /                                    8.19 kB         110 kB
+Γö£ Γùï /_not-found                          876 B          88.2 kB
+Γö£ ╞Æ /api/analytics                       0 B                0 B
+Γö£ ╞Æ /api/auth/[[...nextauth]]            0 B                0 B
+Γö£ ╞Æ /api/clients                         0 B                0 B
+Γö£ ╞Æ /api/crm                             0 B                0 B
+Γö£ ╞Æ /api/documents                       0 B                0 B
+Γö£ ╞Æ /api/equipment                       0 B                0 B
+Γö£ ╞Æ /api/estimator                       0 B                0 B
+Γö£ ╞Æ /api/finance                         0 B                0 B
+Γö£ ╞Æ /api/integrations                    0 B                0 B
+Γö£ ╞Æ /api/leads                           0 B                0 B
+Γö£ ╞Æ /api/leads/[id]                      0 B                0 B
+Γö£ ╞Æ /api/notifications                   0 B                0 B
+Γö£ ╞Æ /api/procurement                     0 B                0 B
+Γö£ ╞Æ /api/projects                        0 B                0 B
+Γö£ ╞Æ /api/projects/[id]                   0 B                0 B
+Γö£ ╞Æ /api/quality                         0 B                0 B
+Γö£ ╞Æ /api/safety                          0 B                0 B
+Γö£ ╞Æ /api/workforce                       0 B                0 B
+Γö£ Γùï /blog                                207 B           102 kB
+Γö£ Γùï /careers                             207 B           102 kB
+Γö£ Γùï /contact                             3.42 kB        99.4 kB
+Γö£ ╞Æ /dashboard                           857 B          96.9 kB
+Γö£ ╞Æ /dashboard/analytics                 3.19 kB        99.9 kB
+Γö£ ╞Æ /dashboard/branches                  3.87 kB         101 kB
+Γö£ ╞Æ /dashboard/clients                   3.38 kB         100 kB
+Γö£ ╞Æ /dashboard/crm                       3.81 kB         100 kB
+Γö£ ╞Æ /dashboard/equipment                 4 kB            101 kB
+Γö£ ╞Æ /dashboard/finance                   5.19 kB         102 kB
+Γö£ ╞Æ /dashboard/leads                     4.46 kB         101 kB
+Γö£ ╞Æ /dashboard/marketing                 3.39 kB         100 kB
+Γö£ ╞Æ /dashboard/procurement               3.82 kB         101 kB
+Γö£ ╞Æ /dashboard/projects                  4.72 kB         110 kB
+Γö£ ╞Æ /dashboard/projects/[id]             5.35 kB         111 kB
+Γö£ ╞Æ /dashboard/quality                   3.77 kB         100 kB
+Γö£ ╞Æ /dashboard/safety                    4.14 kB         101 kB
+Γö£ ╞Æ /dashboard/settings                  4.74 kB         101 kB
+Γö£ ╞Æ /dashboard/workforce                 3.74 kB         100 kB
+Γö£ Γùï /estimator                           4.75 kB         101 kB
+Γö£ Γùï /login                               13.3 kB         119 kB
+Γö£ ╞Æ /portal                              4.72 kB         110 kB
+Γö£ ╞Æ /portal/documents                    3.65 kB         100 kB
+Γö£ ╞Æ /portal/invoices                     4.02 kB         101 kB
+Γö£ ╞Æ /portal/messages                     4.58 kB         101 kB
+Γö£ ╞Æ /portal/projects                     3.17 kB        99.8 kB
+Γö£ Γùï /portfolio                           3.66 kB         105 kB
+Γö£ Γùï /register                            4.64 kB         110 kB
+Γö£ Γùï /services/commercial                 4.33 kB         106 kB
+Γö£ Γùï /services/industrial                 4.52 kB         106 kB
+Γö£ Γùï /services/infrastructure             4.37 kB         106 kB
+Γö£ Γùï /services/renovation                 4.56 kB         106 kB
+Γö£ Γùï /services/residential                4.6 kB          106 kB
+Γö£ Γùï /team                                207 B           102 kB
+Γöö Γùï /testimonials                        207 B           102 kB
++ First Load JS shared by all            87.3 kB
+  Γö£ chunks/2117-0a84273d9e4b44b8.js      31.7 kB
+  Γö£ chunks/fd9d1056-b50eb0f100742bbc.js  53.6 kB
+  Γöö other shared chunks (total)          1.95 kB
+
+
+Γùï  (Static)   prerendered as static content
+╞Æ  (Dynamic)  server-rendered on demand
+
