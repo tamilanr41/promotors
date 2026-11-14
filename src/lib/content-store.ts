@@ -77,9 +77,10 @@ const BROADCAST_CHANNEL_NAME = "aaa_content_sync_channel";
 export async function fetchLiveContent() {
   try {
     const res = await fetch("/api/content", { cache: "no-store" });
-    if (res.ok) {
+    const contentType = res.headers.get("content-type") || "";
+    if (res.ok && contentType.includes("application/json")) {
       const json = await res.json();
-      if (json.success && json.data) {
+      if (json && json.success && json.data) {
         if (typeof window !== "undefined") {
           localStorage.setItem("aaa_cached_content", JSON.stringify(json.data));
         }
@@ -87,7 +88,7 @@ export async function fetchLiveContent() {
       }
     }
   } catch (err) {
-    console.error("fetchLiveContent error:", err);
+    // Gracefully handle offline or static environments
   }
 
   // Fallback to localStorage if offline
