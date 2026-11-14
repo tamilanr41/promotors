@@ -21,6 +21,7 @@ build/
 # database & local files
 *.db
 *.db-journal
+*.zip
 NETLIFY_DROP_FRONTEND/
 NETLIFY_DROP_FRONTEND.zip
 .env.local
