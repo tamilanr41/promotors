@@ -17,7 +17,7 @@ export default function AosInit() {
       script.src = "https://unpkg.com/aos@2.3.4/dist/aos.js";
       script.async = true;
       script.onload = initAOS;
-      document.body.appendChild(script);
+      document.head.appendChild(script);
     } else {
       initAOS();
     }

@@ -42,6 +42,7 @@ const navigation = [
 export default function Header() {
   const pathname = usePathname();
   const { data: session } = useSession();
+  const [mounted, setMounted] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [mobileDropdown, setMobileDropdown] = useState<string | null>(null);
@@ -52,6 +53,7 @@ export default function Header() {
   const activeOffers = liveOffers.filter((o) => o.active !== false);
 
   useEffect(() => {
+    setMounted(true);
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
     };
@@ -79,7 +81,7 @@ export default function Header() {
     <>
       <header className="fixed inset-x-0 top-0 z-[100] transition-all duration-300">
         {/* TOP RUNNING OFFER BANNER (MARQUEE TICKER ABOVE NAVBAR) */}
-        {activeOffers.length > 0 && (
+        {mounted && activeOffers.length > 0 && (
           <div
             suppressHydrationWarning
             className="relative bg-gradient-to-r from-amber-600 via-amber-500 to-amber-600 text-slate-950 font-black text-[11px] sm:text-xs py-1.5 border-b border-amber-600/40 shadow-sm overflow-hidden select-none"
@@ -224,7 +226,7 @@ export default function Header() {
                 </a>
 
                 {/* PROFILE ICON ONLY */}
-                {session ? (
+                {mounted && session ? (
                   <div className="group/user relative">
                     <button
                       aria-label="Admin Profile"
@@ -325,14 +327,14 @@ export default function Header() {
               <div className="flex items-center gap-1.5">
                 {/* DISCREET STEALTH ADMIN ICON - NO TEXT, REGULAR USERS SEE A TRUST BADGE, ADMIN CLICKS TO ACCESS */}
                 <Link
-                  href={session ? "/dashboard" : "/admin-login"}
+                  href={mounted && session ? "/dashboard" : "/admin-login"}
                   onClick={() => setIsOpen(false)}
                   className="relative p-1.5 rounded-lg text-slate-400 dark:text-slate-500 hover:text-amber-500 dark:hover:text-amber-400 hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors"
                   aria-label="Verification Seal"
                   title=""
                 >
                   <ShieldCheck className="h-4 w-4" />
-                  {session && (
+                  {mounted && session && (
                     <span className="absolute top-1 right-1 w-1.5 h-1.5 bg-amber-500 rounded-full" />
                   )}
                 </Link>
