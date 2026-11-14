@@ -49,7 +49,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </ToastProvider>
           </AppProvider>
         </AuthProvider>
-        <script src="https://unpkg.com/aos@2.3.4/dist/aos.js" async />
       </body>
     </html>
   );
