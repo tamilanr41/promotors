@@ -47,7 +47,7 @@ export default function Footer() {
             <div className="lg:col-span-5">
               <Link href="/" className="flex items-center gap-3">
                 <Image
-                  src="/logo.png"
+                  src="/logo.webp"
                   alt="AAA Promoterz & Builders"
                   width={40}
                   height={40}

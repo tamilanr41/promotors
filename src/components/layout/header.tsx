@@ -132,7 +132,7 @@ export default function Header() {
               <Link href="/" className="group flex shrink-0 items-center gap-2">
                 <div className="relative h-7 sm:h-8 w-auto flex items-center justify-center transition-transform group-hover:scale-105">
                   <Image
-                    src="/logo.png"
+                    src="/logo.webp"
                     alt="AAA Promoterz & Builders"
                     width={40}
                     height={30}
@@ -309,7 +309,7 @@ export default function Header() {
             <div className="flex items-center justify-between pb-4 border-b border-slate-200 dark:border-slate-800">
               <div className="flex items-center gap-2">
                 <div className="relative h-7 w-auto flex items-center justify-center">
-                  <Image src="/logo.png" alt="Logo" width={36} height={26} className="h-6 w-auto object-contain" />
+                  <Image src="/logo.webp" alt="Logo" width={36} height={26} className="h-6 w-auto object-contain" />
                 </div>
                 <span className="font-display text-sm font-bold text-slate-900 dark:text-white">
                   <span className="text-amber-500">AAA</span> PROMOTERZ

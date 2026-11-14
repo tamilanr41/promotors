@@ -30,6 +30,8 @@ export default function ImageWithFallback({
     <img
       alt={alt}
       className={className}
+      loading={props.loading || "lazy"}
+      decoding="async"
       onError={() => setError(true)}
       {...props}
     />

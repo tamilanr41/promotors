@@ -20,7 +20,7 @@
       "plotsCount": 36,
       "priceRange": "₹750 - ₹950 / sq.ft",
       "status": "Fast Selling",
-      "image": "/img2.png",
+      "image": "/img2.webp",
       "description": "Serene residential layout just 5 mins from the temple with excellent connectivity to Chennai highway.",
       "isActive": true
     },
@@ -32,7 +32,7 @@
       "plotsCount": 62,
       "priceRange": "₹550 - ₹750 / sq.ft",
       "status": "Ongoing Development",
-      "image": "/img1.png",
+      "image": "/img1.webp",
       "description": "Rapidly appreciating residential layout surrounded by schools, colleges and hospitals.",
       "isActive": true
     },
@@ -44,7 +44,7 @@
       "plotsCount": 18,
       "priceRange": "₹35 Lakhs / Acre",
       "status": "Ready to Construct",
-      "image": "/formland.jpeg",
+      "image": "/formland.webp",
       "description": "Fertile agricultural farming plots with borewell water, red soil, and boundary fencing.",
       "isActive": true
     },
@@ -56,7 +56,7 @@
       "plotsCount": 28,
       "priceRange": "₹800 / sq.ft",
       "status": "Completed",
-      "image": "/scetch1.jpeg",
+      "image": "/scetch1.webp",
       "description": "100% sold-out project with happy families already starting house construction.",
       "isActive": true
     }
@@ -71,7 +71,7 @@
       "totalAcres": "14 Acres",
       "estimatedPlots": 120,
       "preBookingStatus": "Pre-Booking Open",
-      "image": "/img4.png",
+      "image": "/img4.webp",
       "highlights": "Close to the upcoming metro corridor, wide 40ft blacktop roads, landscaped parks and clubhouse.",
       "isActive": true
     },
@@ -84,7 +84,7 @@
       "totalAcres": "8 Acres",
       "estimatedPlots": 75,
       "preBookingStatus": "Early Bird Available",
-      "image": "/img5.png",
+      "image": "/img5.webp",
       "highlights": "Direct highway frontage, 100% vaastu compliant plots with DTCP & RERA pending final clearance.",
       "isActive": true
     },
@@ -97,7 +97,7 @@
       "totalAcres": "25 Acres",
       "estimatedPlots": 35,
       "preBookingStatus": "Coming Soon",
-      "image": "/img6.png",
+      "image": "/img6.webp",
       "highlights": "Scenic organic farming plots with drip irrigation, fruit orchards and secure 24/7 boundary watch.",
       "isActive": true
     },
@@ -110,7 +110,7 @@
       "totalAcres": "5 Acres",
       "estimatedPlots": 24,
       "preBookingStatus": "Approvals in Progress",
-      "image": "/img7.png",
+      "image": "/img7.webp",
       "highlights": "High-visibility retail and commercial showrooms on national highway with immense capital appreciation.",
       "isActive": true
     }

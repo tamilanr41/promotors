@@ -17,7 +17,7 @@ export type SlideItem = {
 
 const defaultSlides: SlideItem[] = [
   {
-    image: "/img7.png",
+    image: "/img7.webp",
     eyebrow: "10+ Years of Trusted Landmarks & Quality Plots",
     title: "We Construct Landmarks & Develop Quality Plots",
     badge: "10+ YEARS EXCELLENCE",
@@ -28,7 +28,7 @@ const defaultSlides: SlideItem[] = [
     videoLabelBottom: "View Projects",
   },
   {
-    image: "/layoutarak1.jpeg",
+    image: "/layoutarak1.webp",
     eyebrow: "DTCP & CMDA Approved Residential Gated Layouts",
     title: "Planned Villa Plots Ready for Registration",
     badge: "DTCP & CMDA APPROVED",
@@ -39,7 +39,7 @@ const defaultSlides: SlideItem[] = [
     videoLabelBottom: "View Projects",
   },
   {
-    image: "/img3.png",
+    image: "/img3.webp",
     eyebrow: "Turnkey Construction & Vastu-Compliant Architecture",
     title: "Construction Solutions For Tomorrow's Living",
     badge: "FIXED WRITTEN CONTRACTS",
@@ -50,7 +50,7 @@ const defaultSlides: SlideItem[] = [
     videoLabelBottom: "View Projects",
   },
   {
-    image: "/formland.jpeg",
+    image: "/formland.webp",
     eyebrow: "Fertile Agricultural Farmlands Across Tamil Nadu",
     title: "Scenic Organic Plots With Dependable Water",
     badge: "100% CLEAR TITLES",
@@ -61,7 +61,7 @@ const defaultSlides: SlideItem[] = [
     videoLabelBottom: "View Projects",
   },
   {
-    image: "/img2.png",
+    image: "/img2.webp",
     eyebrow: "Prime Strategic Locations In Arakkonam & Maduranthangam",
     title: "Approved Plots Ready For Instant Registration",
     badge: "BANK LOANS UP TO 80%",

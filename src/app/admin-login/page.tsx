@@ -152,7 +152,7 @@ export default function AdminLoginPage() {
       <header className="border-b border-slate-800/80 bg-slate-950/70 backdrop-blur-md px-6 py-4 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2.5 group">
           <div className="h-8 w-8 rounded-lg bg-slate-900 border border-amber-500/30 flex items-center justify-center p-1">
-            <Image src="/logo.png" alt="Logo" width={28} height={28} className="object-contain" />
+            <Image src="/logo.webp" alt="Logo" width={28} height={28} className="object-contain" />
           </div>
           <div>
             <span className="font-display text-sm font-bold text-white group-hover:text-amber-400 transition-colors">

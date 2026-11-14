@@ -48,14 +48,14 @@ const testimonials = [
 ];
 
 const processSteps = [
-  { n: "01", title: "Enquiry", text: "Share your plot size, budget and preferred location.", image: "/scetch1.jpeg" },
-  { n: "02", title: "Site visit", text: "Walk the land with us and feel the ground.", image: "/img1.png" },
-  { n: "03", title: "Documentation", text: "Title, patta, chitta and EC verified in writing.", image: "/notice.jpeg" },
-  { n: "04", title: "Registration", text: "Smooth, guided registration at the sub-registrar.", image: "/img2.png" },
-  { n: "05", title: "Layout planning", text: "Roads, drainage and plot orientation fixed.", image: "/layoutarak1.jpeg" },
-  { n: "06", title: "Construction", text: "Quality materials and a written contract.", image: "/img3.png" },
-  { n: "07", title: "Handover", text: "Keys, documents and full support.", image: "/formland.jpeg" },
-  { n: "08", title: "Support", text: "After-sales care for as long as you need.", image: "/img4.png" },
+  { n: "01", title: "Enquiry", text: "Share your plot size, budget and preferred location.", image: "/scetch1.webp" },
+  { n: "02", title: "Site visit", text: "Walk the land with us and feel the ground.", image: "/img1.webp" },
+  { n: "03", title: "Documentation", text: "Title, patta, chitta and EC verified in writing.", image: "/notice.webp" },
+  { n: "04", title: "Registration", text: "Smooth, guided registration at the sub-registrar.", image: "/img2.webp" },
+  { n: "05", title: "Layout planning", text: "Roads, drainage and plot orientation fixed.", image: "/layoutarak1.webp" },
+  { n: "06", title: "Construction", text: "Quality materials and a written contract.", image: "/img3.webp" },
+  { n: "07", title: "Handover", text: "Keys, documents and full support.", image: "/formland.webp" },
+  { n: "08", title: "Support", text: "After-sales care for as long as you need.", image: "/img4.webp" },
 ];
 
 const services = [
@@ -70,10 +70,10 @@ const services = [
 ];
 
 const projects = [
-  { title: "Arakkonam Layout", meta: "Arakkonam · 2024", image: "/layoutarak1.jpeg", href: "/portfolio" },
-  { title: "Thiruthani Layout", meta: "Thiruthani · 2023", image: "/img1.png", href: "/portfolio" },
-  { title: "Maduranthangam Layout", meta: "Maduranthangam · 2024", image: "/layoutmad1.jpeg", href: "/portfolio" },
-  { title: "Farming Lands", meta: "Tamil Nadu · Ongoing", image: "/formland.jpeg", href: "/portfolio" },
+  { title: "Arakkonam Layout", meta: "Arakkonam · 2024", image: "/layoutarak1.webp", href: "/portfolio" },
+  { title: "Thiruthani Layout", meta: "Thiruthani · 2023", image: "/img1.webp", href: "/portfolio" },
+  { title: "Maduranthangam Layout", meta: "Maduranthangam · 2024", image: "/layoutmad1.webp", href: "/portfolio" },
+  { title: "Farming Lands", meta: "Tamil Nadu · Ongoing", image: "/formland.webp", href: "/portfolio" },
 ];
 
 const posts = [
@@ -378,10 +378,10 @@ export default function HomePage() {
                 <Reveal>
                   <div className="grid grid-cols-2 gap-5">
                     <div className="overflow-hidden rounded-xl border border-bone-300 shadow-sm hover-img-glow">
-                      <ImageWithFallback src="/img5.png" alt="Builders at work" className="editorial-img h-full w-full object-cover" />
+                      <ImageWithFallback src="/img5.webp" alt="Builders at work" className="editorial-img h-full w-full object-cover" />
                     </div>
                     <div className="overflow-hidden rounded-xl border border-bone-300 shadow-sm hover-img-float">
-                      <ImageWithFallback src="/img6.png" alt="Site engineers" className="editorial-img h-full w-full object-cover" />
+                      <ImageWithFallback src="/img6.webp" alt="Site engineers" className="editorial-img h-full w-full object-cover" />
                     </div>
                   </div>
                 </Reveal>
@@ -467,16 +467,16 @@ export default function HomePage() {
                 <Reveal delay={120}>
                   <div className="grid grid-cols-2 gap-4">
                     <div className="overflow-hidden rounded-xl shadow-sm hover-img-zoom">
-                      <ImageWithFallback src="/img7.png" alt="Layout site" className="editorial-img h-full w-full object-cover" />
+                      <ImageWithFallback src="/img7.webp" alt="Layout site" className="editorial-img h-full w-full object-cover" />
                     </div>
                     <div className="overflow-hidden rounded-xl shadow-sm hover-img-tilt">
-                      <ImageWithFallback src="/img1.png" alt="Plots" className="editorial-img h-full w-full object-cover" />
+                      <ImageWithFallback src="/img1.webp" alt="Plots" className="editorial-img h-full w-full object-cover" />
                     </div>
                     <div className="overflow-hidden rounded-xl shadow-sm hover-img-float">
-                      <ImageWithFallback src="/img2.png" alt="Site" className="editorial-img h-full w-full object-cover" />
+                      <ImageWithFallback src="/img2.webp" alt="Site" className="editorial-img h-full w-full object-cover" />
                     </div>
                     <div className="overflow-hidden rounded-xl shadow-sm hover-img-vibrant">
-                      <ImageWithFallback src="/img3.png" alt="Construction" className="editorial-img h-full w-full object-cover" />
+                      <ImageWithFallback src="/img3.webp" alt="Construction" className="editorial-img h-full w-full object-cover" />
                     </div>
                   </div>
                 </Reveal>
@@ -756,7 +756,7 @@ export default function HomePage() {
       {/* ==================== CTA ==================== */}
       <section
         className="relative overflow-hidden bg-cover bg-center py-24 lg:py-32"
-        style={{ backgroundImage: "url('/img7.png')" }}
+        style={{ backgroundImage: "url('/img7.webp')" }}
       >
         <div className="absolute inset-0 bg-ink/75" />
         <div className="relative container mx-auto max-w-[1320px] px-5 sm:px-6 lg:px-10">

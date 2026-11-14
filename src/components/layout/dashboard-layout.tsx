@@ -94,7 +94,7 @@ export default function DashboardLayout({ children, user }: DashboardLayoutProps
       {/* BRAND HEADER */}
       <div className={cn("flex items-center gap-3 border-b border-slate-200 dark:border-slate-800/80 px-4 py-4 sm:py-5", collapsed && "justify-center")}>
         <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-gradient-to-tr from-amber-500 to-amber-600 text-slate-950 shadow-md shadow-amber-500/20 p-1">
-          <Image src="/logo.png" alt="Logo" width={28} height={28} className="object-contain" />
+          <Image src="/logo.webp" alt="Logo" width={28} height={28} className="object-contain" />
         </div>
         {!collapsed && (
           <div className="overflow-hidden">

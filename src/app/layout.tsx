@@ -12,9 +12,9 @@ export const metadata: Metadata = {
     "Trusted land developers in Tamil Nadu. Premium residential layouts, farming lands and construction projects across Arakkonam, Thiruthani, Maduranthangam, Tiruvallur, Acharapakkam and Kanchipuram — with clear titles and honest pricing.",
   keywords: ["AAA Promoterz", "residential layouts Tamil Nadu", "farming lands", "plots for sale", "Arakkonam layout", "Thiruthani plots", "Maduranthangam land", "clear titles"],
   icons: {
-    icon: "/logo.png",
-    shortcut: "/logo.png",
-    apple: "/logo.png",
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/logo.webp",
   },
   openGraph: {
     title: "AAA Promoterz",
