@@ -88,6 +88,12 @@ export default function AdminTestimonialsPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingId, setEditingId] = useState<string | null>(null);
   const [deleteConfirmId, setDeleteConfirmId] = useState<string | null>(null);
+  const [actionAlert, setActionAlert] = useState<string | null>(null);
+
+  const showFeedback = (msg: string) => {
+    setActionAlert(msg);
+    setTimeout(() => setActionAlert(null), 3500);
+  };
 
   // Form State
   const [formData, setFormData] = useState({
@@ -149,6 +155,7 @@ export default function AdminTestimonialsPage() {
     let updated: TestimonialItem[];
     if (editingId) {
       updated = testimonials.map((t) => (t.id === editingId ? { ...t, ...formData } : t));
+      showFeedback("Customer review updated and live across site!");
     } else {
       const newItem: TestimonialItem = {
         id: `REV-${String(Date.now()).slice(-4)}`,
@@ -156,6 +163,7 @@ export default function AdminTestimonialsPage() {
         date: new Date().toISOString().split("T")[0],
       };
       updated = [newItem, ...testimonials];
+      showFeedback("New review added successfully!");
     }
     await setTestimonials(updated);
     setIsModalOpen(false);
@@ -165,16 +173,19 @@ export default function AdminTestimonialsPage() {
     const updated = testimonials.filter((t) => t.id !== id);
     await setTestimonials(updated);
     setDeleteConfirmId(null);
+    showFeedback("Review deleted.");
   };
 
   const toggleActive = async (id: string) => {
     const updated = testimonials.map((t) => (t.id === id ? { ...t, active: !t.active } : t));
     await setTestimonials(updated);
+    showFeedback("Review visibility status updated!");
   };
 
   const toggleFeatured = async (id: string) => {
     const updated = testimonials.map((t) => (t.id === id ? { ...t, featured: !t.featured } : t));
     await setTestimonials(updated);
+    showFeedback("Review featured status updated!");
   };
 
   const filtered = testimonials.filter((t) => {
@@ -213,6 +224,13 @@ export default function AdminTestimonialsPage() {
           <Plus className="w-4 h-4 mr-1.5" /> Add New Testimonial
         </Button>
       </div>
+
+      {actionAlert && (
+        <div className="flex items-center gap-2.5 p-3.5 rounded-xl bg-emerald-500/15 border border-emerald-500/40 text-emerald-400 text-xs font-semibold animate-in fade-in duration-200">
+          <CheckCircle2 className="h-4 w-4 shrink-0 text-emerald-400" />
+          <span>{actionAlert}</span>
+        </div>
+      )}
 
       {/* Filter and Search Bar */}
       <Card className="border border-slate-200 dark:border-slate-800 shadow-sm bg-white dark:bg-slate-900">

@@ -119,13 +119,12 @@ export default function Header() {
 
         {/* MAIN NAVBAR */}
         <div
-          className={`transition-all duration-300 ${
-            scrolled
-              ? "bg-white/95 dark:bg-slate-950/95 backdrop-blur-md border-b border-slate-200/80 dark:border-white/10 shadow-md shadow-slate-900/5"
-              : isDarkHero
+          className={`transition-all duration-300 ${scrolled
+            ? "bg-white/95 dark:bg-slate-950/95 backdrop-blur-md border-b border-slate-200/80 dark:border-white/10 shadow-md shadow-slate-900/5"
+            : isDarkHero
               ? "bg-gradient-to-b from-black/80 via-black/40 to-transparent backdrop-blur-none border-b border-white/10"
               : "bg-transparent backdrop-blur-none border-b border-transparent"
-          }`}
+            }`}
         >
           <div className="mx-auto max-w-[1360px] px-4 sm:px-6 lg:px-8">
             <div className="flex h-14 sm:h-15 items-center justify-between gap-3">
@@ -144,17 +143,15 @@ export default function Header() {
 
                 <div className="flex flex-col">
                   <div className="flex items-center gap-1 leading-none">
-                    <span className={`font-display text-sm sm:text-base font-extrabold tracking-tight transition-colors ${
-                      isDarkHero
-                        ? "text-white group-hover:text-amber-400"
-                        : "text-slate-900 dark:text-white group-hover:text-amber-600 dark:group-hover:text-amber-400"
-                    }`}>
+                    <span className={`font-display text-sm sm:text-base font-extrabold tracking-tight transition-colors ${isDarkHero
+                      ? "text-white group-hover:text-amber-400"
+                      : "text-slate-900 dark:text-white group-hover:text-amber-600 dark:group-hover:text-amber-400"
+                      }`}>
                       <span className="text-amber-500">AAA</span> PROMOTERZ
                     </span>
                   </div>
-                  <span className={`text-[8px] font-bold uppercase tracking-wider font-mono mt-0.5 ${
-                    isDarkHero ? "text-slate-300" : "text-slate-500 dark:text-slate-400"
-                  }`}>
+                  <span className={`text-[8px] font-bold uppercase tracking-wider font-mono mt-0.5 ${isDarkHero ? "text-slate-300" : "text-slate-500 dark:text-slate-400"
+                    }`}>
                     BUILDERS &amp; DEVELOPERS
                   </span>
                 </div>
@@ -168,11 +165,10 @@ export default function Header() {
                       <div className="group/menu relative">
                         <button
                           suppressHydrationWarning
-                          className={`flex items-center gap-1 px-2.5 py-1 text-[11.5px] font-semibold uppercase tracking-wider transition-colors rounded-md ${
-                            isDarkHero
-                              ? "text-white/85 hover:text-amber-400"
-                              : "text-slate-700 dark:text-slate-200 hover:text-amber-600 dark:hover:text-amber-400"
-                          }`}
+                          className={`flex items-center gap-1 px-2.5 py-1 text-[11.5px] font-semibold uppercase tracking-wider transition-colors rounded-md ${isDarkHero
+                            ? "text-white/85 hover:text-amber-400"
+                            : "text-slate-700 dark:text-slate-200 hover:text-amber-600 dark:hover:text-amber-400"
+                            }`}
                         >
                           <span>{item.name}</span>
                           <ChevronDown className="h-2.5 w-2.5 transition-transform duration-200 group-hover/menu:rotate-180 text-amber-500" />
@@ -193,13 +189,12 @@ export default function Header() {
                     ) : (
                       <Link
                         href={item.href}
-                        className={`relative px-2.5 py-1 text-[11.5px] font-semibold uppercase tracking-wider transition-colors rounded-md ${
-                          pathname === item.href
-                            ? "text-amber-500 font-bold"
-                            : isDarkHero
+                        className={`relative px-2.5 py-1 text-[11.5px] font-semibold uppercase tracking-wider transition-colors rounded-md ${pathname === item.href
+                          ? "text-amber-500 font-bold"
+                          : isDarkHero
                             ? "text-white/85 hover:text-amber-400"
                             : "text-slate-700 dark:text-slate-200 hover:text-amber-600 dark:hover:text-amber-400"
-                        }`}
+                          }`}
                       >
                         <span>{item.name}</span>
                         {pathname === item.href && (
@@ -215,11 +210,10 @@ export default function Header() {
               <div className="hidden items-center gap-2.5 lg:flex">
                 <a
                   href="tel:+919176783332"
-                  className={`hidden items-center gap-1.5 text-[11px] font-mono font-semibold transition-colors xl:flex ${
-                    isDarkHero
-                      ? "text-white/85 hover:text-amber-400"
-                      : "text-slate-700 dark:text-slate-200 hover:text-amber-600 dark:hover:text-amber-400"
-                  }`}
+                  className={`hidden items-center gap-1.5 text-[11px] font-mono font-semibold transition-colors xl:flex ${isDarkHero
+                    ? "text-white/85 hover:text-amber-400"
+                    : "text-slate-700 dark:text-slate-200 hover:text-amber-600 dark:hover:text-amber-400"
+                    }`}
                 >
                   <Phone className="h-3 w-3 text-amber-500" />
                   <span>+91 91767 83332</span>
@@ -262,11 +256,10 @@ export default function Header() {
                     href="/admin-login"
                     aria-label="Admin Profile Login"
                     title="Admin Profile Login"
-                    className={`flex h-7 w-7 sm:h-8 sm:w-8 items-center justify-center rounded-lg border transition-all shadow-sm ${
-                      isDarkHero
-                        ? "border-white/25 bg-white/10 text-white hover:text-amber-400 hover:border-amber-400"
-                        : "border-slate-300 dark:border-white/20 bg-white/70 dark:bg-white/5 hover:border-amber-500 hover:bg-amber-500/15 text-slate-700 dark:text-slate-200 hover:text-amber-600 dark:hover:text-amber-400"
-                    }`}
+                    className={`flex h-7 w-7 sm:h-8 sm:w-8 items-center justify-center rounded-lg border transition-all shadow-sm ${isDarkHero
+                      ? "border-white/25 bg-white/10 text-white hover:text-amber-400 hover:border-amber-400"
+                      : "border-slate-300 dark:border-white/20 bg-white/70 dark:bg-white/5 hover:border-amber-500 hover:bg-amber-500/15 text-slate-700 dark:text-slate-200 hover:text-amber-600 dark:hover:text-amber-400"
+                      }`}
                   >
                     <User className="h-3.5 w-3.5" />
                   </Link>
@@ -290,11 +283,10 @@ export default function Header() {
                 <ThemeToggle />
                 <button
                   onClick={() => setIsOpen(!isOpen)}
-                  className={`p-1.5 rounded-lg transition-colors ${
-                    isDarkHero
-                      ? "text-white hover:text-amber-400 hover:bg-white/10"
-                      : "text-slate-800 dark:text-white hover:text-amber-600 dark:hover:text-amber-400 hover:bg-black/5 dark:hover:bg-white/10"
-                  }`}
+                  className={`p-1.5 rounded-lg transition-colors ${isDarkHero
+                    ? "text-white hover:text-amber-400 hover:bg-white/10"
+                    : "text-slate-800 dark:text-white hover:text-amber-600 dark:hover:text-amber-400 hover:bg-black/5 dark:hover:bg-white/10"
+                    }`}
                   aria-label="Toggle menu"
                 >
                   {isOpen ? <X className="h-5 w-5" /> : <ChevronDown className="h-5 w-5 -rotate-90" />}

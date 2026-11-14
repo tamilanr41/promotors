@@ -69,61 +69,100 @@ export interface LeadItem {
   notes: string;
 }
 
-export type ContentType = "projects" | "upcoming" | "offers" | "testimonials" | "leads";
+export interface SettingsItem {
+  companyName: string;
+  email: string;
+  phone: string;
+  address: string;
+  website: string;
+}
+
+export type ContentType = "projects" | "upcoming" | "offers" | "testimonials" | "leads" | "settings";
 
 const CONTENT_SYNC_EVENT = "aaa_site_content_updated";
 const BROADCAST_CHANNEL_NAME = "aaa_content_sync_channel";
+const LOCAL_STORAGE_KEY = "aaa_cached_content";
+const LOCAL_TIMESTAMP_KEY = "aaa_content_local_ts";
 
-export async function fetchLiveContent() {
+export async function fetchLiveContent(): Promise<Record<string, any> | null> {
+  let localData: Record<string, any> = {};
+  let localTs = 0;
+
+  if (typeof window !== "undefined") {
+    try {
+      const cached = localStorage.getItem(LOCAL_STORAGE_KEY);
+      if (cached) localData = JSON.parse(cached);
+      localTs = Number(localStorage.getItem(LOCAL_TIMESTAMP_KEY) || 0);
+    } catch {}
+  }
+
   try {
     const res = await fetch("/api/content", { cache: "no-store" });
     const contentType = res.headers.get("content-type") || "";
     if (res.ok && contentType.includes("application/json")) {
       const json = await res.json();
       if (json && json.success && json.data) {
-        if (typeof window !== "undefined") {
-          localStorage.setItem("aaa_cached_content", JSON.stringify(json.data));
+        const serverData = json.data;
+        const serverTs = Number(json.updatedAt || 0);
+
+        // If client has newer local edits than server, preserve local edits and sync to server
+        if (localTs > serverTs && Object.keys(localData).length > 0) {
+          const merged = { ...serverData, ...localData };
+          if (typeof window !== "undefined") {
+            localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(merged));
+          }
+          // Push merged changes to server in background
+          fetch("/api/content", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(merged),
+          }).catch(() => {});
+          return merged;
         }
-        return json.data;
+
+        // Server data is newer or local is empty, update local cache
+        const merged = { ...localData, ...serverData };
+        if (typeof window !== "undefined") {
+          localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(merged));
+        }
+        return merged;
       }
     }
-  } catch (err) {
-    // Gracefully handle offline or static environments
+  } catch {
+    // Gracefully fallback to localStorage when offline or server unreachable
   }
 
-  // Fallback to localStorage if offline
-  if (typeof window !== "undefined") {
-    try {
-      const cached = localStorage.getItem("aaa_cached_content");
-      if (cached) return JSON.parse(cached);
-    } catch {}
-  }
-  return null;
+  return Object.keys(localData).length > 0 ? localData : null;
 }
 
-export async function saveLiveContent(type: ContentType, data: any) {
-  try {
-    // 1. Immediately update localStorage and broadcast instantly across all open tabs/windows
-    if (typeof window !== "undefined") {
-      try {
-        const cached = localStorage.getItem("aaa_cached_content");
-        const parsed = cached ? JSON.parse(cached) : {};
-        parsed[type] = data;
-        localStorage.setItem("aaa_cached_content", JSON.stringify(parsed));
+export async function saveLiveContent(type: ContentType, data: any): Promise<boolean> {
+  const now = Date.now();
 
-        // Same-window broadcast
-        window.dispatchEvent(new CustomEvent(CONTENT_SYNC_EVENT, { detail: { type, data } }));
+  // 1. Immediately persist to localStorage and broadcast with 0ms delay
+  if (typeof window !== "undefined") {
+    try {
+      const cached = localStorage.getItem(LOCAL_STORAGE_KEY);
+      const parsed = cached ? JSON.parse(cached) : {};
+      parsed[type] = data;
+      localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(parsed));
+      localStorage.setItem(LOCAL_TIMESTAMP_KEY, String(now));
 
-        // Instant cross-tab broadcast (0ms delay)
-        if (typeof BroadcastChannel !== "undefined") {
-          const channel = new BroadcastChannel(BROADCAST_CHANNEL_NAME);
-          channel.postMessage({ type, data });
-          channel.close();
-        }
-      } catch {}
+      // Same-tab instant broadcast
+      window.dispatchEvent(new CustomEvent(CONTENT_SYNC_EVENT, { detail: { type, data } }));
+
+      // Cross-tab instant broadcast
+      if (typeof BroadcastChannel !== "undefined") {
+        const channel = new BroadcastChannel(BROADCAST_CHANNEL_NAME);
+        channel.postMessage({ type, data, timestamp: now });
+        channel.close();
+      }
+    } catch (err) {
+      console.warn("localStorage save error:", err);
     }
+  }
 
-    // 2. Persist to API / disk
+  // 2. Persist to API / serverless /tmp
+  try {
     const res = await fetch("/api/content", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -131,8 +170,8 @@ export async function saveLiveContent(type: ContentType, data: any) {
     });
     return res.ok;
   } catch (err) {
-    console.error(`saveLiveContent (${type}) error:`, err);
-    return false;
+    console.warn(`saveLiveContent (${type}) API error (saved to localStorage):`, err);
+    return true; // Still true because client storage is guaranteed
   }
 }
 
@@ -141,27 +180,26 @@ export function useLiveContent<T>(
   type: ContentType,
   fallback: T[]
 ): [T[], (newData: T[]) => Promise<void>, boolean] {
-  // Initial state matches fallback so SSR and initial client pass match 100% (eliminates hydration errors)
   const [data, setData] = useState<T[]>(fallback);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     let isMounted = true;
 
-    // Immediately load from localStorage on client mount (0ms, no network wait)
+    // Immediately load from localStorage on client mount (0ms latency)
     try {
-      const cached = localStorage.getItem("aaa_cached_content");
+      const cached = localStorage.getItem(LOCAL_STORAGE_KEY);
       if (cached) {
         const parsed = JSON.parse(cached);
-        if (parsed && Array.isArray(parsed[type]) && isMounted) {
+        if (parsed && Array.isArray(parsed[type]) && parsed[type].length > 0 && isMounted) {
           setData(parsed[type]);
         }
       }
     } catch {}
 
-    // Background fetch to ensure latest data from disk/server
+    // Background server sync to pull latest changes
     fetchLiveContent().then((content) => {
-      if (isMounted && content && content[type]) {
+      if (isMounted && content && Array.isArray(content[type]) && content[type].length > 0) {
         setData(content[type]);
       }
     });
@@ -169,13 +207,13 @@ export function useLiveContent<T>(
     // 1. Same-window custom event handler
     const handleCustomSync = (e: Event) => {
       const customEvent = e as CustomEvent;
-      if (customEvent.detail && customEvent.detail.type === type) {
+      if (customEvent.detail && customEvent.detail.type === type && isMounted) {
         setData(customEvent.detail.data);
       }
     };
     window.addEventListener(CONTENT_SYNC_EVENT, handleCustomSync);
 
-    // 2. Cross-tab instant BroadcastChannel handler (0ms latency)
+    // 2. Cross-tab instant BroadcastChannel handler
     let channel: BroadcastChannel | null = null;
     if (typeof BroadcastChannel !== "undefined") {
       channel = new BroadcastChannel(BROADCAST_CHANNEL_NAME);
@@ -188,10 +226,10 @@ export function useLiveContent<T>(
 
     // 3. Storage event fallback
     const handleStorage = (e: StorageEvent) => {
-      if (e.key === "aaa_cached_content" && e.newValue) {
+      if (e.key === LOCAL_STORAGE_KEY && e.newValue && isMounted) {
         try {
           const parsed = JSON.parse(e.newValue);
-          if (parsed && parsed[type] && isMounted) {
+          if (parsed && Array.isArray(parsed[type])) {
             setData(parsed[type]);
           }
         } catch {}

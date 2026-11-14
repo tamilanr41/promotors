@@ -39,6 +39,12 @@ export default function LeadsPage() {
   const [statusFilter, setStatusFilter] = useState("all");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingLead, setEditingLead] = useState<Lead | null>(null);
+  const [actionAlert, setActionAlert] = useState<string | null>(null);
+
+  const showFeedback = (msg: string) => {
+    setActionAlert(msg);
+    setTimeout(() => setActionAlert(null), 3500);
+  };
 
   // Form State
   const [formData, setFormData] = useState({
@@ -88,6 +94,7 @@ export default function LeadsPage() {
   const handleDelete = async (id: string) => {
     if (confirm("Are you sure you want to delete this enquiry record?")) {
       await setLeads(leads.filter((l) => l.id !== id));
+      showFeedback("Enquiry deleted.");
     }
   };
 
@@ -103,6 +110,7 @@ export default function LeadsPage() {
           : l
       );
       await setLeads(updated);
+      showFeedback("Lead enquiry updated successfully!");
     } else {
       const newLead: Lead = {
         id: `LD-${Math.floor(100 + Math.random() * 900)}`,
@@ -110,6 +118,7 @@ export default function LeadsPage() {
         date: new Date().toISOString().split("T")[0],
       };
       await setLeads([newLead, ...leads]);
+      showFeedback("New lead enquiry added!");
     }
     setIsModalOpen(false);
   };
@@ -145,6 +154,13 @@ export default function LeadsPage() {
           <Plus className="mr-2 h-4 w-4" /> Add New Enquiry
         </Button>
       </div>
+
+      {actionAlert && (
+        <div className="flex items-center gap-2.5 p-3.5 rounded-xl bg-emerald-500/15 border border-emerald-500/40 text-emerald-400 text-xs font-semibold animate-in fade-in duration-200">
+          <CheckCircle2 className="h-4 w-4 shrink-0 text-emerald-400" />
+          <span>{actionAlert}</span>
+        </div>
+      )}
 
       {/* Filter and Search Bar */}
       <Card className="border border-slate-200 dark:border-slate-800 shadow-sm">

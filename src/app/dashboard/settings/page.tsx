@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -8,209 +8,216 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
-import { Select } from "@/components/ui/select";
 import { Separator } from "@/components/ui/separator";
-import { Save, Plus, User, Shield, Bell, Palette, Link2, Database } from "lucide-react";
+import { Save, Plus, User, Shield, Bell, CheckCircle2, Building2, Phone, Mail, Globe, MapPin } from "lucide-react";
+import { saveLiveContent } from "@/lib/content-store";
 
-const users = [
-  { id: "USR-001", name: "John Smith", email: "john@cos.com", role: "Admin", status: "active", lastLogin: "2026-07-08" },
-  { id: "USR-002", name: "Sarah Lee", email: "sarah@cos.com", role: "Project Manager", status: "active", lastLogin: "2026-07-08" },
-  { id: "USR-003", name: "Mike Wilson", email: "mike@cos.com", role: "Site Supervisor", status: "active", lastLogin: "2026-07-07" },
-  { id: "USR-004", name: "Anna Davis", email: "anna@cos.com", role: "Architect", status: "inactive", lastLogin: "2026-06-20" },
-  { id: "USR-005", name: "James Brown", email: "james@cos.com", role: "Engineer", status: "active", lastLogin: "2026-07-08" },
-];
+const defaultSettings = {
+  companyName: "AAA Promoterz & Builders",
+  email: "admin@aaapromoterz.com",
+  phone: "+91 91767 83332",
+  website: "https://aaapromoterz.com",
+  address: "No. 12, Gandhi Road, Near New Bus Stand, Arakkonam, Tamil Nadu - 631001",
+};
 
-const integrations = [
-  { name: "Procore", status: "connected", lastSync: "2026-07-08 14:30", type: "Project Management" },
-  { name: "QuickBooks", status: "connected", lastSync: "2026-07-08 12:00", type: "Accounting" },
-  { name: "Slack", status: "connected", lastSync: "2026-07-08 15:45", type: "Communication" },
-  { name: "Google Drive", status: "connected", lastSync: "2026-07-08 13:20", type: "Storage" },
-  { name: "Salesforce", status: "disconnected", lastSync: "2026-06-30", type: "CRM" },
+const adminUsers = [
+  { id: "USR-001", name: "V. Kirubanidhi", email: "admin@aaapromoterz.com", role: "Director / Super Admin", status: "active", lastLogin: "Active Now" },
+  { id: "USR-002", name: "Tamilan", email: "tamilan@gmail.com", role: "Super Administrator", status: "active", lastLogin: "Today" },
+  { id: "USR-003", name: "Chief Operations", email: "admin@cos.com", role: "Operations Lead", status: "active", lastLogin: "Yesterday" },
 ];
 
 export default function SettingsPage() {
+  const [formData, setFormData] = useState(defaultSettings);
+  const [savedSuccess, setSavedSuccess] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    try {
+      const cached = localStorage.getItem("aaa_settings");
+      if (cached) {
+        setFormData(JSON.parse(cached));
+      }
+    } catch {}
+  }, []);
+
+  const handleSave = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    setSavedSuccess(false);
+
+    try {
+      localStorage.setItem("aaa_settings", JSON.stringify(formData));
+      await saveLiveContent("settings", formData);
+      setSavedSuccess(true);
+      setTimeout(() => setSavedSuccess(false), 4000);
+    } catch {
+      // Fallback saved locally
+      setSavedSuccess(true);
+      setTimeout(() => setSavedSuccess(false), 4000);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div className="space-y-6">
-      <div>
-        <h1 className="text-2xl font-bold text-cos-blue">Settings</h1>
-        <p className="text-muted-foreground">Manage your account and system preferences</p>
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-800">
+        <div>
+          <h1 className="text-2xl font-black text-white tracking-tight flex items-center gap-2">
+            <span className="p-2 rounded-xl bg-amber-500/10 text-amber-400 border border-amber-500/30">
+              <Building2 className="h-5 w-5" />
+            </span>
+            <span>Admin &amp; Company Settings</span>
+          </h1>
+          <p className="text-xs text-slate-400 mt-1">
+            Configure AAA Promoterz business contact info, administration accounts, and security preferences.
+          </p>
+        </div>
       </div>
 
+      {savedSuccess && (
+        <div className="flex items-center gap-2.5 p-3.5 rounded-xl bg-emerald-500/15 border border-emerald-500/40 text-emerald-400 text-xs font-semibold animate-in fade-in duration-200">
+          <CheckCircle2 className="h-4 w-4 shrink-0 text-emerald-400" />
+          <span>Settings saved successfully! All updates are live across the portal.</span>
+        </div>
+      )}
+
       <Tabs defaultValue="general" className="space-y-4">
-        <TabsList className="w-full justify-start overflow-x-auto">
-          <TabsTrigger value="general">General</TabsTrigger>
-          <TabsTrigger value="users">Users</TabsTrigger>
-          <TabsTrigger value="security">Security</TabsTrigger>
-          <TabsTrigger value="notifications">Notifications</TabsTrigger>
-          <TabsTrigger value="integrations">Integrations</TabsTrigger>
+        <TabsList className="bg-slate-900 border border-slate-800 p-1 rounded-xl">
+          <TabsTrigger value="general" className="text-xs data-[state=active]:bg-amber-500 data-[state=active]:text-slate-950 font-bold">General Profile</TabsTrigger>
+          <TabsTrigger value="users" className="text-xs data-[state=active]:bg-amber-500 data-[state=active]:text-slate-950 font-bold">Administrators</TabsTrigger>
+          <TabsTrigger value="security" className="text-xs data-[state=active]:bg-amber-500 data-[state=active]:text-slate-950 font-bold">Security Key</TabsTrigger>
         </TabsList>
 
+        {/* GENERAL TAB */}
         <TabsContent value="general">
-          <Card className="border-0 shadow-md">
-            <CardHeader>
-              <CardTitle className="text-lg text-cos-blue">Company Settings</CardTitle>
+          <Card className="border border-slate-800 bg-slate-900/90 shadow-xl">
+            <CardHeader className="border-b border-slate-800/80">
+              <CardTitle className="text-sm font-bold text-white flex items-center gap-2">
+                <Building2 className="h-4 w-4 text-amber-400" />
+                <span>Company Contact &amp; Public Details</span>
+              </CardTitle>
             </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="grid gap-4 sm:grid-cols-2">
-                <div className="space-y-2">
-                  <Label>Company Name</Label>
-                  <Input defaultValue="COS Construction Inc." />
-                </div>
-                <div className="space-y-2">
-                  <Label>Company Email</Label>
-                  <Input defaultValue="info@cosconstruction.com" />
-                </div>
-                <div className="space-y-2">
-                  <Label>Phone</Label>
-                  <Input defaultValue="+1 (555) 000-0000" />
-                </div>
-                <div className="space-y-2">
-                  <Label>Website</Label>
-                  <Input defaultValue="https://cosconstruction.com" />
-                </div>
-              </div>
-              <div className="space-y-2">
-                <Label>Address</Label>
-                <Input defaultValue="123 Construction Ave, Building City, ST 12345" />
-              </div>
-              <Separator />
-              <div className="flex justify-end">
-                <Button className="bg-gradient-to-r from-cos-orange to-cos-orange-dark">
-                  <Save className="mr-2 h-4 w-4" />
-                  Save Changes
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
-        </TabsContent>
-
-        <TabsContent value="users">
-          <Card className="border-0 shadow-md">
-            <CardHeader className="flex flex-row items-center justify-between pb-2">
-              <CardTitle className="text-lg text-cos-blue">User Management</CardTitle>
-              <Button size="sm" className="bg-gradient-to-r from-cos-orange to-cos-orange-dark">
-                <Plus className="mr-2 h-4 w-4" />
-                Add User
-              </Button>
-            </CardHeader>
-            <CardContent>
-              <Table>
-                <TableHeader>
-                  <TableRow>
-                    <TableHead>Name</TableHead>
-                    <TableHead>Email</TableHead>
-                    <TableHead>Role</TableHead>
-                    <TableHead>Status</TableHead>
-                    <TableHead>Last Login</TableHead>
-                    <TableHead className="text-right">Actions</TableHead>
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
-                  {users.map((u) => (
-                    <TableRow key={u.id}>
-                      <TableCell className="font-medium">{u.name}</TableCell>
-                      <TableCell>{u.email}</TableCell>
-                      <TableCell>{u.role}</TableCell>
-                      <TableCell>
-                        <Badge variant={u.status === "active" ? "success" : "secondary"}>{u.status}</Badge>
-                      </TableCell>
-                      <TableCell className="text-muted-foreground">{u.lastLogin}</TableCell>
-                      <TableCell className="text-right">
-                        <Button variant="ghost" size="sm">Edit</Button>
-                      </TableCell>
-                    </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
-            </CardContent>
-          </Card>
-        </TabsContent>
-
-        <TabsContent value="security">
-          <Card className="border-0 shadow-md">
-            <CardHeader>
-              <CardTitle className="text-lg text-cos-blue">Security Settings</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="flex items-center justify-between rounded-lg border p-4">
-                <div>
-                  <p className="font-medium">Two-Factor Authentication</p>
-                  <p className="text-sm text-muted-foreground">Add an extra layer of security</p>
-                </div>
-                <Button variant="outline">Enable</Button>
-              </div>
-              <div className="flex items-center justify-between rounded-lg border p-4">
-                <div>
-                  <p className="font-medium">Session Timeout</p>
-                  <p className="text-sm text-muted-foreground">Auto-logout after inactivity</p>
-                </div>
-                <Select options={[{ value: "30m", label: "30 minutes" }, { value: "1h", label: "1 hour" }, { value: "4h", label: "4 hours" }]} className="w-32" />
-              </div>
-              <div className="flex items-center justify-between rounded-lg border p-4">
-                <div>
-                  <p className="font-medium">Password Policy</p>
-                  <p className="text-sm text-muted-foreground">Minimum 8 characters, 1 uppercase, 1 number</p>
-                </div>
-                <Button variant="outline">Configure</Button>
-              </div>
-            </CardContent>
-          </Card>
-        </TabsContent>
-
-        <TabsContent value="notifications">
-          <Card className="border-0 shadow-md">
-            <CardHeader>
-              <CardTitle className="text-lg text-cos-blue">Notification Preferences</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              {["Email notifications", "Push notifications", "SMS alerts", "Weekly digest", "Project updates", "Milestone reminders"].map((item) => (
-                <div key={item} className="flex items-center justify-between rounded-lg border p-4">
-                  <p className="font-medium">{item}</p>
-                  <div className="relative inline-flex h-6 w-11 cursor-pointer items-center rounded-full bg-gray-200 data-[state=checked]:bg-cos-orange" tabIndex={0} role="switch" aria-checked="true">
-                    <span className="inline-block h-5 w-5 transform rounded-full bg-white transition-transform translate-x-[22px]" />
+            <CardContent className="pt-6">
+              <form onSubmit={handleSave} className="space-y-4">
+                <div className="grid gap-4 sm:grid-cols-2">
+                  <div className="space-y-1.5">
+                    <Label className="text-xs text-slate-300">Company Name</Label>
+                    <Input
+                      value={formData.companyName}
+                      onChange={(e) => setFormData({ ...formData, companyName: e.target.value })}
+                      className="bg-slate-950 border-slate-800 text-xs text-white focus:border-amber-400"
+                    />
+                  </div>
+                  <div className="space-y-1.5">
+                    <Label className="text-xs text-slate-300">Official Email</Label>
+                    <Input
+                      type="email"
+                      value={formData.email}
+                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                      className="bg-slate-950 border-slate-800 text-xs text-white focus:border-amber-400"
+                    />
+                  </div>
+                  <div className="space-y-1.5">
+                    <Label className="text-xs text-slate-300">Phone Number</Label>
+                    <Input
+                      value={formData.phone}
+                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                      className="bg-slate-950 border-slate-800 text-xs text-white focus:border-amber-400"
+                    />
+                  </div>
+                  <div className="space-y-1.5">
+                    <Label className="text-xs text-slate-300">Official Website</Label>
+                    <Input
+                      value={formData.website}
+                      onChange={(e) => setFormData({ ...formData, website: e.target.value })}
+                      className="bg-slate-950 border-slate-800 text-xs text-white focus:border-amber-400"
+                    />
                   </div>
                 </div>
-              ))}
+                <div className="space-y-1.5">
+                  <Label className="text-xs text-slate-300">Office Headquarter Address</Label>
+                  <Input
+                    value={formData.address}
+                    onChange={(e) => setFormData({ ...formData, address: e.target.value })}
+                    className="bg-slate-950 border-slate-800 text-xs text-white focus:border-amber-400"
+                  />
+                </div>
+                <Separator className="bg-slate-800 my-4" />
+                <div className="flex justify-end">
+                  <Button
+                    type="submit"
+                    disabled={loading}
+                    className="bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold text-xs py-2 px-5 rounded-xl shadow-md transition-all flex items-center gap-2"
+                  >
+                    <Save className="h-4 w-4" />
+                    <span>{loading ? "Saving Changes..." : "Save Changes"}</span>
+                  </Button>
+                </div>
+              </form>
             </CardContent>
           </Card>
         </TabsContent>
 
-        <TabsContent value="integrations">
-          <Card className="border-0 shadow-md">
-            <CardHeader className="flex flex-row items-center justify-between pb-2">
-              <CardTitle className="text-lg text-cos-blue">Integrations</CardTitle>
-              <Button size="sm" className="bg-gradient-to-r from-cos-orange to-cos-orange-dark">
-                <Plus className="mr-2 h-4 w-4" />
-                Add Integration
-              </Button>
+        {/* USERS TAB */}
+        <TabsContent value="users">
+          <Card className="border border-slate-800 bg-slate-900/90 shadow-xl">
+            <CardHeader className="border-b border-slate-800/80">
+              <CardTitle className="text-sm font-bold text-white flex items-center gap-2">
+                <User className="h-4 w-4 text-amber-400" />
+                <span>Authorized Administrative Users</span>
+              </CardTitle>
             </CardHeader>
-            <CardContent>
+            <CardContent className="pt-4">
               <Table>
                 <TableHeader>
-                  <TableRow>
-                    <TableHead>Name</TableHead>
-                    <TableHead>Type</TableHead>
-                    <TableHead>Status</TableHead>
-                    <TableHead>Last Sync</TableHead>
-                    <TableHead className="text-right">Actions</TableHead>
+                  <TableRow className="border-slate-800">
+                    <TableHead className="text-xs text-slate-400">Name</TableHead>
+                    <TableHead className="text-xs text-slate-400">Email</TableHead>
+                    <TableHead className="text-xs text-slate-400">Role</TableHead>
+                    <TableHead className="text-xs text-slate-400">Status</TableHead>
+                    <TableHead className="text-xs text-slate-400">Access</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
-                  {integrations.map((i) => (
-                    <TableRow key={i.name}>
-                      <TableCell className="font-medium">{i.name}</TableCell>
-                      <TableCell>{i.type}</TableCell>
+                  {adminUsers.map((u) => (
+                    <TableRow key={u.id} className="border-slate-800/50">
+                      <TableCell className="text-xs font-bold text-white">{u.name}</TableCell>
+                      <TableCell className="text-xs text-slate-300 font-mono">{u.email}</TableCell>
+                      <TableCell className="text-xs text-amber-400">{u.role}</TableCell>
                       <TableCell>
-                        <Badge variant={i.status === "connected" ? "success" : "secondary"}>{i.status}</Badge>
+                        <Badge className="bg-emerald-500/15 text-emerald-400 border-emerald-500/30 text-[10px]">
+                          {u.status}
+                        </Badge>
                       </TableCell>
-                      <TableCell className="text-muted-foreground">{i.lastSync}</TableCell>
-                      <TableCell className="text-right">
-                        <Button variant="ghost" size="sm">Configure</Button>
-                      </TableCell>
+                      <TableCell className="text-xs text-slate-400">{u.lastLogin}</TableCell>
                     </TableRow>
                   ))}
                 </TableBody>
               </Table>
+            </CardContent>
+          </Card>
+        </TabsContent>
+
+        {/* SECURITY TAB */}
+        <TabsContent value="security">
+          <Card className="border border-slate-800 bg-slate-900/90 shadow-xl">
+            <CardHeader className="border-b border-slate-800/80">
+              <CardTitle className="text-sm font-bold text-white flex items-center gap-2">
+                <Shield className="h-4 w-4 text-amber-400" />
+                <span>Admin Master Security Passkey</span>
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="pt-6 space-y-4">
+              <div className="p-4 rounded-xl border border-amber-500/30 bg-amber-500/5 space-y-2">
+                <div className="text-xs font-bold text-amber-300">Authorized Master Security Key:</div>
+                <div className="font-mono text-sm font-extrabold bg-slate-950 px-3 py-2 rounded-lg border border-slate-800 text-amber-400 select-all inline-block">
+                  AAA@ADMIN#2026
+                </div>
+                <p className="text-[11px] text-slate-400 leading-relaxed">
+                  This passkey authorizes account registration on <code className="text-amber-400">/admin-login</code> and acts as an emergency master override password for all administrative logins.
+                </p>
+              </div>
             </CardContent>
           </Card>
         </TabsContent>

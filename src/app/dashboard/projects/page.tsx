@@ -106,12 +106,19 @@ export default function CurrentProjectsPage() {
 
   // Delete Confirmation State
   const [deleteConfirmId, setDeleteConfirmId] = useState<string | null>(null);
+  const [actionAlert, setActionAlert] = useState<string | null>(null);
+
+  const showFeedback = (msg: string) => {
+    setActionAlert(msg);
+    setTimeout(() => setActionAlert(null), 3500);
+  };
 
   const toggleProjectStatus = async (id: string) => {
     const updated = projects.map((p) =>
       p.id === id ? { ...p, isActive: p.isActive === false ? true : false } : p
     );
     await setProjects(updated);
+    showFeedback("Project status updated successfully!");
   };
 
   const filteredProjects = projects.filter((p) => {
@@ -177,9 +184,11 @@ export default function CurrentProjectsPage() {
     let updated: ProjectItem[];
     if (editingId) {
       updated = projects.map((p) => (p.id === editingId ? { ...formData, id: editingId } : p));
+      showFeedback("Project details saved and updated live!");
     } else {
       const newId = `PRJ-${String(Date.now()).slice(-4)}`;
       updated = [{ ...formData, id: newId }, ...projects];
+      showFeedback("New project added successfully!");
     }
     await setProjects(updated);
     setIsModalOpen(false);
@@ -189,6 +198,7 @@ export default function CurrentProjectsPage() {
     const updated = projects.filter((p) => p.id !== id);
     await setProjects(updated);
     setDeleteConfirmId(null);
+    showFeedback("Project deleted.");
   };
 
   return (
@@ -217,6 +227,13 @@ export default function CurrentProjectsPage() {
           <span>Add New Project</span>
         </button>
       </div>
+
+      {actionAlert && (
+        <div className="flex items-center gap-2.5 p-3.5 rounded-xl bg-emerald-500/15 border border-emerald-500/40 text-emerald-400 text-xs font-semibold animate-in fade-in duration-200">
+          <CheckCircle2 className="h-4 w-4 shrink-0 text-emerald-400" />
+          <span>{actionAlert}</span>
+        </div>
+      )}
 
       {/* FILTER & SEARCH BAR */}
       <div className="flex flex-col sm:flex-row gap-3">

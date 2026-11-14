@@ -10,6 +10,7 @@ import {
   MapPin,
   Calendar,
   Sparkles,
+  CheckCircle2,
   X,
   Layers,
   ArrowRight,
@@ -95,12 +96,19 @@ export default function UpcomingProjectsPage() {
   });
 
   const [deleteConfirmId, setDeleteConfirmId] = useState<string | null>(null);
+  const [actionAlert, setActionAlert] = useState<string | null>(null);
+
+  const showFeedback = (msg: string) => {
+    setActionAlert(msg);
+    setTimeout(() => setActionAlert(null), 3500);
+  };
 
   const toggleUpcomingStatus = async (id: string) => {
     const updated = upcoming.map((u) =>
       u.id === id ? { ...u, isActive: u.isActive === false ? true : false } : u
     );
     await setUpcoming(updated);
+    showFeedback("Upcoming project status updated!");
   };
 
   const filtered = upcoming.filter((item) => {
@@ -165,9 +173,11 @@ export default function UpcomingProjectsPage() {
     let updated: UpcomingProjectItem[];
     if (editingId) {
       updated = upcoming.map((u) => (u.id === editingId ? { ...formData, id: editingId } : u));
+      showFeedback("Upcoming project updated and live across site!");
     } else {
       const newId = `UP-${String(Date.now()).slice(-4)}`;
       updated = [{ ...formData, id: newId }, ...upcoming];
+      showFeedback("New upcoming project added successfully!");
     }
     await setUpcoming(updated);
     setIsModalOpen(false);
@@ -177,6 +187,7 @@ export default function UpcomingProjectsPage() {
     const updated = upcoming.filter((u) => u.id !== id);
     await setUpcoming(updated);
     setDeleteConfirmId(null);
+    showFeedback("Upcoming project deleted.");
   };
 
   return (
@@ -205,6 +216,13 @@ export default function UpcomingProjectsPage() {
           <span>Add Upcoming Project</span>
         </button>
       </div>
+
+      {actionAlert && (
+        <div className="flex items-center gap-2.5 p-3.5 rounded-xl bg-emerald-500/15 border border-emerald-500/40 text-emerald-400 text-xs font-semibold animate-in fade-in duration-200">
+          <CheckCircle2 className="h-4 w-4 shrink-0 text-emerald-400" />
+          <span>{actionAlert}</span>
+        </div>
+      )}
 
       {/* SEARCH & STATUS FILTER */}
       <div className="flex flex-col sm:flex-row gap-3">

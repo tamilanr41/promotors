@@ -102,6 +102,12 @@ export default function OffersPage() {
   });
 
   const [deleteConfirmId, setDeleteConfirmId] = useState<string | null>(null);
+  const [actionAlert, setActionAlert] = useState<string | null>(null);
+
+  const showFeedback = (msg: string) => {
+    setActionAlert(msg);
+    setTimeout(() => setActionAlert(null), 3500);
+  };
 
   const filtered = offers.filter(
     (o) =>
@@ -143,6 +149,7 @@ export default function OffersPage() {
   const handleToggleActive = async (id: string) => {
     const updated = offers.map((o) => (o.id === id ? { ...o, active: !o.active } : o));
     await setOffers(updated);
+    showFeedback("Offer active status updated successfully!");
   };
 
   const handleSave = async (e: React.FormEvent) => {
@@ -150,9 +157,11 @@ export default function OffersPage() {
     let updated: OfferItem[];
     if (editingId) {
       updated = offers.map((o) => (o.id === editingId ? { ...formData, id: editingId } : o));
+      showFeedback("Offer updated and live across website!");
     } else {
       const newId = `OFF-${String(Date.now()).slice(-4)}`;
       updated = [{ ...formData, id: newId }, ...offers];
+      showFeedback("New promotional offer created and live!");
     }
     await setOffers(updated);
     setIsModalOpen(false);
@@ -162,6 +171,7 @@ export default function OffersPage() {
     const updated = offers.filter((o) => o.id !== id);
     await setOffers(updated);
     setDeleteConfirmId(null);
+    showFeedback("Offer deleted.");
   };
 
   return (
@@ -190,6 +200,13 @@ export default function OffersPage() {
           <span>Create New Offer</span>
         </button>
       </div>
+
+      {actionAlert && (
+        <div className="flex items-center gap-2.5 p-3.5 rounded-xl bg-emerald-500/15 border border-emerald-500/40 text-emerald-400 text-xs font-semibold animate-in fade-in duration-200">
+          <CheckCircle2 className="h-4 w-4 shrink-0 text-emerald-400" />
+          <span>{actionAlert}</span>
+        </div>
+      )}
 
       {/* SEARCH */}
       <div className="relative max-w-md">
