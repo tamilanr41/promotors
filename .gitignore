@@ -21,6 +21,8 @@ build/
 # database & local files
 *.db
 *.db-journal
+NETLIFY_DROP_FRONTEND/
+NETLIFY_DROP_FRONTEND.zip
 .env.local
 .env.development.local
 .env.test.local

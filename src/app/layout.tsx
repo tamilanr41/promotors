@@ -5,12 +5,17 @@ import { AppProvider } from "@/store/app-store";
 import { AuthProvider } from "@/components/providers/auth-provider";
 
 export const metadata: Metadata = {
-  title: "AAA Promoterz & Builders | Residential Layouts & Farming Lands in Tamil Nadu",
+  title: "AAA Promoterz",
   description:
     "Trusted land developers in Tamil Nadu. Premium residential layouts, farming lands and construction projects across Arakkonam, Thiruthani, Maduranthangam, Tiruvallur, Acharapakkam and Kanchipuram — with clear titles and honest pricing.",
   keywords: ["AAA Promoterz", "residential layouts Tamil Nadu", "farming lands", "plots for sale", "Arakkonam layout", "Thiruthani plots", "Maduranthangam land", "clear titles"],
+  icons: {
+    icon: "/logo.png",
+    shortcut: "/logo.png",
+    apple: "/logo.png",
+  },
   openGraph: {
-    title: "AAA Promoterz & Builders",
+    title: "AAA Promoterz",
     description:
       "Own the land. Shape the future. Premium residential plots and fertile farming lands across Tamil Nadu — clear titles, honest pricing, written contracts.",
     type: "website",
@@ -25,6 +30,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <head>
+        <link rel="icon" type="image/png" href="/logo.png" />
+        <link rel="apple-touch-icon" href="/logo.png" />
         <script
           dangerouslySetInnerHTML={{
             __html: `(function(){try{var t=localStorage.getItem('aaa-theme');var d=t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme: dark)').matches);if(d)document.documentElement.classList.add('dark');}catch(e){}})();`,
