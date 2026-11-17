@@ -174,7 +174,13 @@ export default function Footer() {
 
         <div className="border-t border-bone/10">
           <div className="flex flex-col items-start justify-between gap-3 py-6 text-[11px] uppercase tracking-[0.18em] text-gray-500 dark:text-gray-700 sm:flex-row sm:items-center">
-            <p suppressHydrationWarning>&copy; {new Date().getFullYear()} AAA Promoterz &amp; Builders. All rights reserved.</p>
+            <p suppressHydrationWarning>
+              &copy; {new Date().getFullYear()}{" "}
+              <a href="https://aaapromoterzandbuilders.com" className="hover:text-brass transition-colors font-medium">
+                AAA Promoterz &amp; Builders (aaapromoterzandbuilders.com)
+              </a>
+              . All rights reserved.
+            </p>
             <p className="flex items-center gap-2">
               <span className="h-1 w-1 rounded-full bg-brass/60" />
               Clear titles · Honest deals

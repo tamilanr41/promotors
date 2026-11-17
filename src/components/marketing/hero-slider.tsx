@@ -18,9 +18,9 @@ export type SlideItem = {
 const defaultSlides: SlideItem[] = [
   {
     image: "/img7.webp",
-    eyebrow: "10+ Years of Trusted Landmarks & Quality Plots",
-    title: "We Construct Landmarks & Develop Quality Plots",
-    badge: "10+ YEARS EXCELLENCE",
+    eyebrow: "AAA Promoterz & Builders · 10+ Years of Trusted Plots & Construction",
+    title: "We Construct Landmarks & Develop Approved Quality Plots",
+    badge: "AAA PROMOTERZ & BUILDERS",
     primaryHref: "/portfolio",
     primaryLabel: "Explore Projects",
     videoHref: "/portfolio",

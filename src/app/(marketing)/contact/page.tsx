@@ -11,7 +11,10 @@ const contactInfo = [
   {
     icon: MapPin,
     title: "Head office",
-    details: [{ text: "Chennai, Tamil Nadu", href: null }, { text: "India", href: null }],
+    details: [
+      { text: "No. 12, Gandhi Road, Near New Bus Stand, Arakkonam", href: null },
+      { text: "Chennai & Kanchipuram Belt, Tamil Nadu - 631001, India", href: null },
+    ],
   },
   {
     icon: Phone,

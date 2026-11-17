@@ -83,11 +83,11 @@ const posts = [
 ];
 
 const faqs = [
-  { q: "What is your approach to clear titles?", a: "We verify the parent deed, patta, chitta, EC for 30 years, approved layout plan and litigation status before any plot is listed." },
-  { q: "How do you ensure projects are delivered on time?", a: "Detailed timelines, weekly progress tracking and proactive communication with every stakeholder." },
-  { q: "Can you handle both small and large-scale projects?", a: "Yes — from a single plot to multi-phase layouts and construction projects." },
-  { q: "Do you offer farmland as well?", a: "Yes, fertile agricultural lands with dependable water across the Chengalpattu belt." },
-  { q: "How do I start the process?", a: "Share your plot size, budget and location on WhatsApp or the contact form and we will arrange a site visit." },
+  { q: "Who is AAA Promoterz and Builders?", a: "AAA Promoterz & Builders (aaapromoterzandbuilders.com) is one of Tamil Nadu's leading land developers and construction firms with over a decade of excellence in residential layouts and farmlands." },
+  { q: "Are all AAA Promoterz plots DTCP and CMDA approved?", a: "Yes, 100% of our residential layouts come with verified DTCP or CMDA approvals, clear legal titles, 30-year Encumbrance Certificate (EC), and patta documentation." },
+  { q: "Where are AAA Promoterz projects located?", a: "Our premium residential and farmland projects are situated across high-growth strategic hubs in Arakkonam, Thiruthani, Maduranthangam, Tiruvallur, Acharapakkam, and Kanchipuram." },
+  { q: "Does AAA Promoterz provide bank loan support?", a: "Yes, we arrange bank loan approvals up to 80% with leading nationalized and private banks with minimum documentation hassle." },
+  { q: "How do I book a site visit with AAA Promoterz & Builders?", a: "You can book a free guided site visit by reaching out on WhatsApp or phone at +91 91767 83332 or submitting our contact form at aaapromoterzandbuilders.com/contact." },
 ];
 
 const dockedFeatures = [
